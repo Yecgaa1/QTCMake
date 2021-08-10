@@ -27,6 +27,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
+aux_source_directory(./interactive_buttons SRC_LIST) #搜索当前目录下的所有.cpp文件
+include_directories("./interactive_buttons")
+
 set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
@@ -48,6 +51,7 @@ else()
     else()
         add_executable(QTCMake
             ${PROJECT_SOURCES}
+                ${SRC_LIST}
         )
     endif()
 endif()

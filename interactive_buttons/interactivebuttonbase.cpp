@@ -546,7 +546,7 @@ void InteractiveButtonBase::setFontSize(int f)
         QFont font;
         font.setPointSize(f);
         QFontMetrics fms(font);
-        setMinimumSize(fms.horizontalAdvance(text) + fore_paddings.left + fore_paddings.right, fms.lineSpacing() + fore_paddings.top + fore_paddings.bottom);
+        setMinimumSize(fms.width(text) + fore_paddings.left + fore_paddings.right, fms.lineSpacing() + fore_paddings.top + fore_paddings.bottom);
     }
     if (model != PaintModel::Text)
     {
@@ -756,7 +756,7 @@ void InteractiveButtonBase::setFixedForeSize(bool f, int addin)
         if (font_size > 0)
             font.setPointSize(font_size);
         QFontMetrics fm(font);
-        int w = fm.horizontalAdvance(text);
+        int w = fm.width(text);
         w = icon_width + w + quick_sqrt(w / 2) + fore_paddings.left + fore_paddings.right;
         setMinimumSize(
             w + addin,
@@ -970,7 +970,7 @@ void InteractiveButtonBase::adjustMinimumSize()
     if (font_size <= 0)
     {
         QFontMetrics fm(font());
-        w = fm.horizontalAdvance(text);
+        w = fm.width(text);
         w = icon_width + w + quick_sqrt(w / 2) + fore_paddings.left + fore_paddings.right;
         h = fm.lineSpacing() + fore_paddings.top + fore_paddings.bottom;
     }
@@ -979,7 +979,7 @@ void InteractiveButtonBase::adjustMinimumSize()
         QFont font;
         font.setPointSize(font_size);
         QFontMetrics fm(font);
-        w = fm.horizontalAdvance(text);
+        w = fm.width(text);
         w = icon_width + w + quick_sqrt(w / 2) + fore_paddings.left + fore_paddings.right;
         h = fm.lineSpacing() + fore_paddings.top + fore_paddings.bottom;
     }
