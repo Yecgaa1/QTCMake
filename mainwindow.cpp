@@ -3,8 +3,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include <QTimer>
-#include <interactivebuttonbase.h>
-#include <waterfloatbutton.h>
+#include <./interactive_buttons/interactivebuttonbase.h>
+#include <./interactive_buttons/waterfloatbutton.h>
 
 
 bool changeStyle = true;
@@ -12,9 +12,8 @@ bool changeStyle = true;
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow)
         {
-    InteractiveButtonBase* float_btn = new WaterFloatButton("text", this);
-            float_btn->setGeometry(164, 50, 100, 32);
-            float_btn->setBgColor(QColor(102,51,204,192), QColor(102,51,204,255));
+            InteractiveButtonBase* btn = new InteractiveButtonBase("text", this);
+            btn->setGeometry(300, 300, 100, 100);
     ui->setupUi(this);
 
 

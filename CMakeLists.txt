@@ -33,6 +33,7 @@ set(PROJECT_SOURCES
         mainwindow.h
         mainwindow.ui
 )
+set(CMAKE_INCLUDE_PATH ./interactive_buttons)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(QTCMake
@@ -50,9 +51,8 @@ else()
         )
     endif()
 endif()
+
 target_link_libraries(QTCMake PRIVATE Qt${QT_VERSION_MAJOR}::Widgets )
-
-
 
 set_target_properties(QTCMake PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
