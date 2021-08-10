@@ -2,30 +2,47 @@
 #include <QParallelAnimationGroup>
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-void MainWindow::Quit()
-{
-    m_group->start();
-}
+#include <QTimer>
+#include <interactivebuttonbase.h>
+#include <waterfloatbutton.h>
+
+
+bool changeStyle = true;
+
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
+        : QMainWindow(parent), ui(new Ui::MainWindow)
+        {
+    InteractiveButtonBase* float_btn = new WaterFloatButton("text", this);
+            float_btn->setGeometry(164, 50, 100, 32);
+            float_btn->setBgColor(QColor(102,51,204,192), QColor(102,51,204,255));
     ui->setupUi(this);
-    ui->pushButton->setEnabled(true);
-    connect(ui->pushButton,SIGNAL(clicked()), this,SLOT(Quit()));
-    QPropertyAnimation *pScaleAnimation1 = new QPropertyAnimation(ui->pushButton, "geometry");
-    pScaleAnimation1->setDuration(1000);
-    pScaleAnimation1->setStartValue(QRect(190, 230, 0, 0));
-    pScaleAnimation1->setEndValue(QRect(120, 160, 140, 140));
-    m_group=new QParallelAnimationGroup(this);
-    m_group->addAnimation(pScaleAnimation1);
+
+
+    if (changeStyle) {
+
+    }
+
+    qtimer = new QTimer(this);
 
 
 
+    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(start()));
+    connect(qtimer, SIGNAL(timeout()), this, SLOT(timeout()));
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
 
+void MainWindow::start() {
+    qtimer->start(100);
+    ui->progressBar->setValue(100);
+}
+
+void MainWindow::timeout() {
+    temp--;
+    ui->progressBar->setValue(temp);
+    if (temp == 0) {
+        qtimer->stop();
+    }
+}

@@ -17,11 +17,13 @@ public:
     ~MainWindow();
 
 private slots:
-    void Quit();
+    void start();
+    void timeout();
 
 
 private:
     Ui::MainWindow *ui;
-    QParallelAnimationGroup *m_group;
+    QTimer *qtimer;
+    int temp=100;
 };
 #endif // MAINWINDOW_H

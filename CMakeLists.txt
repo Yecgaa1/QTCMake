@@ -50,8 +50,9 @@ else()
         )
     endif()
 endif()
+target_link_libraries(QTCMake PRIVATE Qt${QT_VERSION_MAJOR}::Widgets )
 
-target_link_libraries(QTCMake PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+
 
 set_target_properties(QTCMake PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
