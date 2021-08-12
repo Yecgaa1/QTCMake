@@ -26,7 +26,7 @@ InteractiveButtonBase::InteractiveButtonBase(QWidget *parent)
       click_ani_appearing(false), click_ani_disappearing(false), click_ani_progress(0),
       mouse_press_event(nullptr), mouse_release_event(nullptr),
       unified_geometry(false), _l(0), _t(0), _w(32), _h(32),
-      jitter_animation(true), elastic_coefficient(1.2), jitter_duration(300),
+      jitter_animation(false), elastic_coefficient(1.2), jitter_duration(300),
       water_animation(true), water_press_duration(800), water_release_duration(400), water_finish_duration(300),
       align(Qt::AlignCenter), _state(false), leave_after_clicked(false), _block_hover(false),
       double_clicked(false), double_timer(nullptr), double_prevent(false)

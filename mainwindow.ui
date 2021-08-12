@@ -6,38 +6,76 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1920</width>
+    <width>1440</width>
     <height>1080</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>850</x>
-      <y>660</y>
-      <width>89</width>
-      <height>24</height>
+      <x>340</x>
+      <y>570</y>
+      <width>751</width>
+      <height>301</height>
      </rect>
     </property>
-    <property name="text">
-     <string>start</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="progressBar">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>690</y>
-      <width>1081</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QProgressBar::chunk
+    <widget class="QPushButton" name="hero1">
+     <property name="geometry">
+      <rect>
+       <x>2</x>
+       <y>0</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="hero2">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>0</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="hero3">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>0</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="timeBar">
+     <property name="geometry">
+      <rect>
+       <x>-110</x>
+       <y>230</y>
+       <width>1081</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QProgressBar::chunk
 {
 background:qlineargradient(spread:pad,x1:0,y1:0,x2:1,y2:0,stop:0 #CA0629,stop:1  #DDB46B);
 border-radius:11px;
@@ -51,23 +89,27 @@ color:white;
 border-radius:2px;
 border:1.2px solid #808080;
 }</string>
-    </property>
-    <property name="value">
-     <number>24</number>
-    </property>
-    <property name="format">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QWidget" name="widget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>780</y>
-      <width>120</width>
-      <height>80</height>
-     </rect>
-    </property>
+     </property>
+     <property name="value">
+      <number>24</number>
+     </property>
+     <property name="format">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="testButton">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>360</y>
+       <width>89</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>start</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -75,7 +117,7 @@ border:1.2px solid #808080;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1920</width>
+     <width>1440</width>
      <height>26</height>
     </rect>
    </property>

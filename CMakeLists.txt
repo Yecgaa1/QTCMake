@@ -27,15 +27,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
+aux_source_directory(./ PROJECT_SOURCES)
 aux_source_directory(./interactive_buttons SRC_LIST) #搜索当前目录下的所有.cpp文件
 include_directories("./interactive_buttons")
 
-set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-)
+#set(PROJECT_SOURCES
+#        main.cpp
+#        mainwindow.cpp
+#        mainwindow.h
+#        mainwindow.ui
+#)
 set(CMAKE_INCLUDE_PATH ./interactive_buttons)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -52,6 +53,7 @@ else()
         add_executable(QTCMake
             ${PROJECT_SOURCES}
                 ${SRC_LIST}
+                ./resource/main.qrc
         )
     endif()
 endif()
@@ -69,3 +71,4 @@ if(QT_VERSION_MAJOR EQUAL 6)
 endif()
 
 target_include_directories(QTCMake PRIVATE "${CMAKE_BINARY_DIR}/QTCMake_autogen/include")
+qt5_add_resources(QTCMake ./resource/wallpaper/wallpaper.qrc)

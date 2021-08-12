@@ -14,39 +14,43 @@ MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow)
         {
 
-    ui->setupUi(this);
-            WaterZoomButton* zoom_btn1 = new WaterZoomButton("tttttttttt", this);
-            zoom_btn1->setGeometry(300, 200, 200, 50);
-            zoom_btn1->setBgColor(QColor(240,128,128));
-            zoom_btn1->setBgColor(Qt::transparent, QColor(0x88, 0x88, 0x88, 0x64));
-            zoom_btn1->setRadius(10, 5);
-            zoom_btn1->setChokingProp(1.18);
-
-
+            ui->setupUi(this);
+            this->setWindowTitle("Hello");
     if (changeStyle) {
+        ui->timeBar->hide();
+        ui->testButton->hide();
 
+        //武将选择
+        QPixmap icon1(tr("resource/hero/1.png"));
+        ui->hero1->setIcon(icon1);
+        ui->hero1->setIconSize(QSize(250, 292));
+        
     }
-
+    //this->setStyleSheet("QFrame#myframe{border-image:url(resource/wallpaper/background.png)}" );
     qtimer = new QTimer(this);
 
-
-
-    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(start()));
-    connect(qtimer, SIGNAL(timeout()), this, SLOT(timeout()));
+    //connect(ui->testButton, SIGNAL(clicked()), this, SLOT(start()));
+    //connect(qtimer, SIGNAL(timeout()), this, SLOT(timeout()));
 }
 
 MainWindow::~MainWindow() {
     delete ui;
 }
 
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    painter.drawPixmap(this->rect(),QPixmap("resource/wallpaper/background.png"));
+}
+
 void MainWindow::start() {
     qtimer->start(100);
-    ui->progressBar->setValue(100);
+    ui->timeBar->setValue(100);
 }
 
 void MainWindow::timeout() {
     temp--;
-    ui->progressBar->setValue(temp);
+    ui->timeBar->setValue(temp);
     if (temp == 0) {
         qtimer->stop();
     }
