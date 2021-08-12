@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QParallelAnimationGroup>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,8 +21,14 @@ public:
 
 
 private slots:
+
+    //计时器槽
     void start();
     void timeout();
+
+    //更新tips槽
+    void clear();//清空
+    void ShowSkill(int i);//技能显示
 
 
 
@@ -79,10 +86,12 @@ private:
         guojia=101,
         liubei=102,
     };
-
-    void ChooseHero();
+    int HeroNum=0;
+    int ChooseHero();//英雄选择
     void HeroSkillLoad(hero i);
 
     void paintEvent(QPaintEvent *event);
+
+    void cardChooseAnime(QPushButton* a);
 };
 #endif // MAINWINDOW_H

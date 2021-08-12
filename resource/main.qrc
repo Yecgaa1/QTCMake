@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>wallpaper/background.png</file>
+        <file>button/No.png</file>
+        <file>button/Yes.png</file>
     </qresource>
 </RCC>

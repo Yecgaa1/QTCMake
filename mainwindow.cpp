@@ -16,19 +16,19 @@ MainWindow::MainWindow(QWidget *parent)
 
             ui->setupUi(this);
             this->setWindowTitle("Hello");
+
     if (changeStyle) {
         ui->timeBar->hide();
         ui->testButton->hide();
+        ui->YesOrNo->hide();
 
-        //武将选择
-        QPixmap icon1(tr("resource/hero/1.png"));
-        ui->hero1->setIcon(icon1);
-        ui->hero1->setIconSize(QSize(250, 292));
-        
+        ui->tips->setWordWrap(true);
+        ui->tips->hide();
     }
+
     //this->setStyleSheet("QFrame#myframe{border-image:url(resource/wallpaper/background.png)}" );
     qtimer = new QTimer(this);
-
+    ChooseHero();
     //connect(ui->testButton, SIGNAL(clicked()), this, SLOT(start()));
     //connect(qtimer, SIGNAL(timeout()), this, SLOT(timeout()));
 }
