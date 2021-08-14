@@ -12,7 +12,7 @@ void MainWindow::run() {
 
 }
 
-int MainWindow::ChooseHero()//武将选择
+int MainWindow::chooseHero()//武将选择
 {
     ui->card1->hide();
     ui->card5->hide();
@@ -35,26 +35,21 @@ int MainWindow::ChooseHero()//武将选择
     QPixmap icon3(tr(path.data()));
     ui->card4->setIcon(icon3);
 
-    ui->card2->setIconSize(QSize(250, 292));
-    ui->card3->setIconSize(QSize(250, 292));
-    ui->card4->setIconSize(QSize(250, 292));
-
     connect(ui->card2,&QPushButton::clicked,this,[=]{
         ui->card2->setEnabled(false);
-        cardChooseAnime(ui->card2);
+        cardChooseAnime(true,ui->card2);
         ShowSkill(heronum[0]);
         ui->card2->setEnabled(true);
     });
     connect(ui->card3,&QPushButton::clicked,this,[=]{
         ui->card3->setEnabled(false);
-        cardChooseAnime(ui->card3);
+        cardChooseAnime(true,ui->card3);
         ShowSkill(heronum[1]);
         ui->card3->setEnabled(true);
     });
     connect(ui->card4,&QPushButton::clicked,this,[=]{
         ui->card4->setEnabled(false);
-        cardChooseAnime(ui->card4);
-        cout<<heronum[2];
+        cardChooseAnime(true,ui->card4);
         ShowSkill(heronum[2]);
         ui->card4->setEnabled(true);
     });

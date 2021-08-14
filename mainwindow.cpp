@@ -24,11 +24,14 @@ MainWindow::MainWindow(QWidget *parent)
 
         ui->tips->setWordWrap(true);
         ui->tips->hide();
+
+        //手牌组初始化
+        for(auto & i : HandCardGroup)i->setIconSize(QSize(250, 292));
     }
 
     //this->setStyleSheet("QFrame#myframe{border-image:url(resource/wallpaper/background.png)}" );
     qtimer = new QTimer(this);
-    ChooseHero();
+    chooseHero();
     //connect(ui->testButton, SIGNAL(clicked()), this, SLOT(start()));
     //connect(qtimer, SIGNAL(timeout()), this, SLOT(timeout()));
 }

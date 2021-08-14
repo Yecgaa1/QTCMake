@@ -52,7 +52,6 @@ else()
     else()
         add_executable(QTCMake
             ${PROJECT_SOURCES}
-                ${SRC_LIST}
                 ./resource/main.qrc
         )
     endif()

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QParallelAnimationGroup>
 #include <QPushButton>
+#include "./ui_mainwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,6 +35,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QParallelAnimationGroup *animeGroup;
     QTimer *qtimer;
     int temp=100;
 
@@ -87,11 +89,11 @@ private:
         liubei=102,
     };
     int HeroNum=0;
-    int ChooseHero();//英雄选择
-    void HeroSkillLoad(hero i);
+    QPushButton* HandCardGroup[5]={ui->card1,ui->card2,ui->card3,ui->card4,ui->card5};
+    int chooseHero();//英雄选择
 
     void paintEvent(QPaintEvent *event);
 
-    void cardChooseAnime(QPushButton* a);
+    void cardChooseAnime(bool single,QPushButton* a,...);//手牌移动动画组,不可加入多个组目前
 };
 #endif // MAINWINDOW_H
