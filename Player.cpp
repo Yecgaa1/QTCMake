@@ -3,16 +3,18 @@
 //
 
 #include "Player.h"
+using namespace std;
 
 void Player::getHandEvent(int num) {
     for(int i=0;i<num;i++)
     {
+
         playerHandHeap.push_back(HandHeap[nextHandHeap]);
         nextHandHeap++;
     }
 }
 
-void Player::bloodChangeEvent(int num, MainWindow::sourceOfDamage sourceOfDamage, Player player) {
+void Player::bloodChangeEvent(int num, MainWindow::sourceOfDamage sourceOfDamage, Player* player) {
     this->bloodNow-=num;
     this->HandTop-=num;
 }

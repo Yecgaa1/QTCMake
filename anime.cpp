@@ -65,29 +65,31 @@ void MainWindow::askChoose(int num,tipsType tipsType,cardSpecies cardSpecies) {
 void MainWindow::timerRun(timerType type,int sec) {
     timeRound=sec*10;
     this->timerNowType=type;
-    timerStart();
+    timerWork();
+    ui->timeBar->show();
     connect(qtimer, SIGNAL(timeout()), this, SLOT(timeout()));
 }
 
-void MainWindow::timerStart() {
+void MainWindow::timerWork() {
     qtimer->start(timeRound);
     ui->timeBar->setValue(100);
-    temp=100;
+    timerTemp=100;
 }
 
 void MainWindow::timeout() {
-    temp--;
-    ui->timeBar->setValue(temp);
-    if (temp == 0) {
+    timerTemp--;
+    ui->timeBar->setValue(timerTemp);
+    if (timerTemp == 0) {
         qtimer->stop();
         //到这一步证明用户没有选择,超时处理代码
         switch(this->timerNowType)
         {
-            case choosingHero:
+            case choosingHeroTimer:
                 cardChooseAnime(true,ui->card2);
+                ui->timeBar->hide();
                 chooseFinish();
                 break;
-            case choosingHand:
+            case choosingHandTimer:
                 break;
         }
 

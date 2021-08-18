@@ -6,7 +6,7 @@
 #include <QPushButton>
 #include <utility>
 #include "./ui_mainwindow.h"
-#include "Player.h"
+#include <QTimer>
 
 using namespace std;
 
@@ -18,17 +18,28 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void run();//主程序
+
+    enum mainStateEnum//主状态机
+    {
+        choosingHero,
+        playing,
+        finishing,
+    }mainState;
+    int HeroId=0;//用户最终选定的英雄
+    int chooseHero();
+
 
 
 
 private slots:
 
     //计时器槽
-    void timerStart();
+    void timerWork();
     void timeout();
     void chooseFinish();
 
@@ -39,19 +50,14 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QParallelAnimationGroup *animeGroup;
-    QTimer *qtimer=new QTimer(this);
-    int temp=100;//计时器用,代表进度百分比
-    enum mainState//主状态机
-    {
-        choosingHero;
-        playing;
-        finishing;
-    }mainState;
+    QTimer *qtimer=new QTimer();
+    int timerTemp=100;//计时器用,代表进度百分比
 
-    vector<Player*> playerList;//玩家对象表
+
+
     enum cardSpecies
     {
-        none=0,
+        allKind=0,
         kill=101,
         flash=102,
         peach=103,
@@ -112,19 +118,14 @@ private:
         endOfRound=6,//回合结束阶段
     };
 
-    enum hero
-    {
-        guojia=101,
-        liubei=102,
-    };
     enum tipsType
     {
         giveUp
     };
     enum timerType
     {
-        choosingHand=1,
-        choosingHero=2,
+        choosingHandTimer,
+        choosingHeroTimer,
     };
     timerType timerNowType;
     int HeroNum=0;
@@ -141,7 +142,7 @@ private:
 
     QPushButton* HandCardGroup[5];
 
-    int chooseHero();//英雄选择
+    //英雄选择
 
 
     void washCard();
@@ -152,7 +153,7 @@ private:
     void cardAllDown();
     void cardChooseAnime(bool single,QPushButton* a,...);//手牌移动动画组,不可加入多个组目前
     void cardUpDown(bool single,QPushButton* a);
-    void askChoose(int num,tipsType tipsType,cardSpecies cardSpecies=none);
+    void askChoose(int num,tipsType tipsType,cardSpecies cardSpecies=allKind);
     void timerRun(timerType type,int sec=10);//不得大于20s
     int timeRound=0;//一个周期事件
 
@@ -160,19 +161,19 @@ private:
     void clear();//清空
     void showSkill(int i,QPushButton* a);//技能显示
 
-    void doJudgmentStage(Player player);
-    void doDrawStage(Player player);
-    void doPlayStage(Player player);
-    void doFoldPhase(Player player);
+
 
 protected:
+
+
+
     enum sourceOfDamage
     {
         player,
         scourge,
-        none
+        None,
     };
-    struct HandHeap
+    struct Hands
     {
         cardSpecies Species;
         string name;
@@ -181,6 +182,6 @@ protected:
 //摸牌堆
 int nextHandHeap=0;
 
-HandHeap heronum[3]={};
+
 };
 #endif // MAINWINDOW_H

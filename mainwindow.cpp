@@ -37,9 +37,9 @@ MainWindow::MainWindow(QWidget *parent)
     //this->setStyleSheet("QFrame#myframe{border-image:url(resource/wallpaper/background.png)}" );
 
     washCard();
-    //chooseHero();
+
     //connect(ui->testButton, SIGNAL(clicked()), this, SLOT(start()));
-    connect(qtimer, SIGNAL(timeout()), this, SLOT(timeout()));
+    //connect(qtimer, SIGNAL(timeout()), this, SLOT(timeout()));
 }
 
 MainWindow::~MainWindow() {
