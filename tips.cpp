@@ -13,8 +13,8 @@ void MainWindow::clear()
 
 }
 
-void MainWindow::ShowSkill(int i) {
-    if(ui->YesOrNo->isHidden()) {    //未来可以改用文本库的形式
+void MainWindow::showSkill(int i,QPushButton* a) {
+    if(a->geometry().y()==50) {    //未来可以改用文本库的形式
         if (i == 47)
             ui->tips->setText("郭嘉   魏   3血\n"
                               "天妒\t当你的判定牌生效后，你可以获得此牌。\n"

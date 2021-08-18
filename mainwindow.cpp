@@ -26,14 +26,20 @@ MainWindow::MainWindow(QWidget *parent)
         ui->tips->hide();
 
         //手牌组初始化
-        for(auto & i : HandCardGroup)i->setIconSize(QSize(250, 292));
+        HandCardGroup[0]=ui->card1;
+        HandCardGroup[1]=ui->card2;
+        HandCardGroup[2]=ui->card3;
+        HandCardGroup[3]=ui->card4;
+        HandCardGroup[4]=ui->card5;
+
     }
 
     //this->setStyleSheet("QFrame#myframe{border-image:url(resource/wallpaper/background.png)}" );
-    qtimer = new QTimer(this);
-    chooseHero();
+
+    washCard();
+    //chooseHero();
     //connect(ui->testButton, SIGNAL(clicked()), this, SLOT(start()));
-    //connect(qtimer, SIGNAL(timeout()), this, SLOT(timeout()));
+    connect(qtimer, SIGNAL(timeout()), this, SLOT(timeout()));
 }
 
 MainWindow::~MainWindow() {
@@ -46,15 +52,3 @@ void MainWindow::paintEvent(QPaintEvent *event)
     painter.drawPixmap(this->rect(),QPixmap("resource/wallpaper/background.png"));
 }
 
-void MainWindow::start() {
-    qtimer->start(100);
-    ui->timeBar->setValue(100);
-}
-
-void MainWindow::timeout() {
-    temp--;
-    ui->timeBar->setValue(temp);
-    if (temp == 0) {
-        qtimer->stop();
-    }
-}

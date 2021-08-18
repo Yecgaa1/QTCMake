@@ -4,7 +4,11 @@
 #include <QMainWindow>
 #include <QParallelAnimationGroup>
 #include <QPushButton>
+#include <utility>
 #include "./ui_mainwindow.h"
+#include "Player.h"
+
+using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,25 +28,32 @@ public:
 private slots:
 
     //计时器槽
-    void start();
+    void timerStart();
     void timeout();
+    void chooseFinish();
 
-    //更新tips槽
-    void clear();//清空
-    void ShowSkill(int i);//技能显示
+
 
 
 
 private:
     Ui::MainWindow *ui;
     QParallelAnimationGroup *animeGroup;
-    QTimer *qtimer;
-    int temp=100;
+    QTimer *qtimer=new QTimer(this);
+    int temp=100;//计时器用,代表进度百分比
+    enum mainState//主状态机
+    {
+        choosingHero;
+        playing;
+        finishing;
+    }mainState;
 
+    vector<Player*> playerList;//玩家对象表
     enum cardSpecies
     {
-        Kill=101,
-        Flash=102,
+        none=0,
+        kill=101,
+        flash=102,
         peach=103,
         //wine=104,
 
@@ -74,6 +85,23 @@ private:
         addAHorse=602,//加一马
 
     };
+
+
+    struct cardLib
+    {
+        cardSpecies Species;
+        string name;
+        int num;
+        int last;//洗牌前需要校验数量
+    };
+    cardLib allCardLib[100]={
+            {kill,"杀",20,20},
+            {flash,"闪",20,20},
+            {peach,"桃",20,20},
+            {impeccable,"无懈可击",20,20},
+             {outOfNothing,"无中生有",20,20},
+            {demolitionOfTheBridgeAcrossTheRiver,"过河拆桥",8,8}
+                           };
     enum roundState
     {
         startOfRound=1,//回合开始阶段
@@ -83,17 +111,76 @@ private:
         foldPhase=5,//弃牌阶段
         endOfRound=6,//回合结束阶段
     };
+
     enum hero
     {
         guojia=101,
         liubei=102,
     };
+    enum tipsType
+    {
+        giveUp
+    };
+    enum timerType
+    {
+        choosingHand=1,
+        choosingHero=2,
+    };
+    timerType timerNowType;
     int HeroNum=0;
-    QPushButton* HandCardGroup[5]={ui->card1,ui->card2,ui->card3,ui->card4,ui->card5};
+
+    struct HandTmpListNode
+    {
+        cardSpecies Species;
+        string name;
+        int id;//对全部顺序手牌来说的id
+        HandTmpListNode *next;
+        HandTmpListNode() : next(nullptr) {};
+        HandTmpListNode(cardSpecies Species, string name,int id) : Species(Species), name(std::move(name)),id(id),next(nullptr){}
+    };
+
+    QPushButton* HandCardGroup[5];
+
     int chooseHero();//英雄选择
+
+
+    void washCard();
 
     void paintEvent(QPaintEvent *event);
 
+    //动画
+    void cardAllDown();
     void cardChooseAnime(bool single,QPushButton* a,...);//手牌移动动画组,不可加入多个组目前
+    void cardUpDown(bool single,QPushButton* a);
+    void askChoose(int num,tipsType tipsType,cardSpecies cardSpecies=none);
+    void timerRun(timerType type,int sec=10);//不得大于20s
+    int timeRound=0;//一个周期事件
+
+    //更新tips槽
+    void clear();//清空
+    void showSkill(int i,QPushButton* a);//技能显示
+
+    void doJudgmentStage(Player player);
+    void doDrawStage(Player player);
+    void doPlayStage(Player player);
+    void doFoldPhase(Player player);
+
+protected:
+    enum sourceOfDamage
+    {
+        player,
+        scourge,
+        none
+    };
+    struct HandHeap
+    {
+        cardSpecies Species;
+        string name;
+        int id;
+    }HandHeap[108];
+//摸牌堆
+int nextHandHeap=0;
+
+HandHeap heronum[3]={};
 };
 #endif // MAINWINDOW_H
