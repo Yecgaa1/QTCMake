@@ -1,8 +1,9 @@
 #include "mainwindow.h"
-#include "Player.h"
+
 
 #include <QApplication>
 #include "main.h"
+//#include "Player.h"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
@@ -15,26 +16,8 @@ int main(int argc, char *argv[])
 
 
     w.show();
-    a.exec();
     w.chooseHero();
-    w.update();
-    while(true)//主状态机运作
-    {
-        switch(w.mainState)
-        {
-
-            case MainWindow::choosingHero:
-                break;
-            case MainWindow::playing:
-
-                break;
-            case MainWindow::finishing:
-                break;
-        }
-    }
-
-
-    return 0;
+    return a.exec();
 }
 
 void run()

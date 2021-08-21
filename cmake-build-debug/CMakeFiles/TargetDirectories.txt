@@ -1,4 +1,0 @@
-D:/GitProject/QTCMake/cmake-build-debug/CMakeFiles/QTCMake.dir
-D:/GitProject/QTCMake/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/GitProject/QTCMake/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-D:/GitProject/QTCMake/cmake-build-debug/CMakeFiles/QTCMake_autogen.dir

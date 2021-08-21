@@ -22,7 +22,7 @@
      <rect>
       <x>140</x>
       <y>690</y>
-      <width>1291</width>
+      <width>1250</width>
       <height>341</height>
      </rect>
     </property>
@@ -91,6 +91,136 @@
       <string/>
      </property>
     </widget>
+    <widget class="QPushButton" name="card12">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>50</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="card13">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>50</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="card14">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>50</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="card15">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>50</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="card10">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>50</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="card9">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>50</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="card8">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>50</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="card7">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>50</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="card6">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>50</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="card11">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>50</y>
+       <width>250</width>
+       <height>292</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QPushButton" name="testButton">
     <property name="geometry">
@@ -102,7 +232,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>start</string>
+     <string>Test</string>
     </property>
    </widget>
    <widget class="QProgressBar" name="timeBar">
@@ -203,7 +333,7 @@ background-color: rgba(255, 255, 255,70);</string>
      <x>0</x>
      <y>0</y>
      <width>1440</width>
-     <height>26</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

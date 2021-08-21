@@ -5,6 +5,9 @@
 #include "Player.h"
 using namespace std;
 
+vector<Player*> playerList;//玩家对象表
+
+
 void Player::getHandEvent(int num) {
     for(int i=0;i<num;i++)
     {

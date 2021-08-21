@@ -5,11 +5,11 @@
 #ifndef QTCMAKE_MAIN_H
 #define QTCMAKE_MAIN_H
 
-#include "mainwindow.h"
+//#include "mainwindow.h"
+#include "Player.h"
 
 
 
-vector<Player*> playerList;//玩家对象表
 
 void run();
 

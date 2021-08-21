@@ -4,9 +4,12 @@
 #include <iostream>
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "Player.h"
 
 using namespace std;
 int heroNum[3]={};
+
+extern vector<Player*> playerList;//玩家对象表
 
 void MainWindow::washCard() {
     int id=0;
@@ -101,6 +104,7 @@ int MainWindow::chooseHero()//武将选择
 void MainWindow::chooseFinish() {
     //遍历得到那张牌被举起
     ui->timeBar->hide();
+    qtimer->stop();
     vector<int> upHand;//被选中的牌
     int tmp=0;
     for (auto &i : HandCardGroup) {
@@ -114,9 +118,10 @@ void MainWindow::chooseFinish() {
     switch (mainState) {
         case choosingHero:
         {
-            HeroNum=heroNum[upHand[0]]-1;
+            HeroNum=heroNum[upHand[0]-1];
             //初始化英雄
-            //playerList.push_back(new Player(heroNum[upHand[0]]-1));//-1因为hero组只有从第二个按钮开始的三个
+            //playerList[0].getHandEvent(1);
+            PrepareRoundOfGame();
         }
     }
 }
