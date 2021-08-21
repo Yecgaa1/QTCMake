@@ -160,6 +160,7 @@ private:
     //更新tips槽
     void clear();//清空
     void showSkill(int i,QPushButton* a);//技能显示
+    void PrepareRoundOfGame();
 
 
 

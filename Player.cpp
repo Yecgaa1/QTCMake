@@ -26,10 +26,18 @@ void Player::giveUpHand(Player player, int num, bool type) {
 
 }
 
-Player::Player(int i) {
+Player::Player(int i,PlayerID P) {
+    //由于确认是两人游戏了
+    //就不写2P以上的背景渲染了
+
+    this->P=P;
     switch(i)
     {
         case 47:
             bloodTop=bloodNow=HandTop=3;
+            break;
+        case 193:
+            bloodTop=bloodNow=HandTop=4;
+            break;
     }
 }

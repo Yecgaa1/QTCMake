@@ -14,8 +14,16 @@ using namespace std;
 class Player : MainWindow {
 
 public:
+
+    enum PlayerID {
+        OneP,
+        TwoP,
+        ThreeP,
+    };
+
     // 回合事件
-    Player(int i);//主构造函数
+    Player(int i,PlayerID P);//主构造函数
+
     void startOfRoundEvent() {};//回合开始阶段
     void judgmentStageEvent() { doJudgmentStage(this); };//判定阶段
     void drawStageEvent() { doDrawStage(this); };//摸牌阶段
@@ -37,6 +45,7 @@ public:
     int bloodNow = bloodTop;
     int HandTop = bloodNow;
     vector<Hands> playerHandHeap;
+    PlayerID P;
 private:
     void doJudgmentStage(Player* player);
 

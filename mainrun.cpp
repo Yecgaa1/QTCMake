@@ -7,6 +7,8 @@
 #include "Player.h"
 
 using namespace std;
+
+
 int heroNum[3]={};
 
 extern vector<Player*> playerList;//玩家对象表
@@ -124,4 +126,12 @@ void MainWindow::chooseFinish() {
             PrepareRoundOfGame();
         }
     }
+}
+
+void MainWindow::PrepareRoundOfGame() {
+    int rivalID=193;
+
+
+    playerList.push_back(new Player(HeroNum,Player::OneP));//-1因为hero组只有从第二个按钮开始的三个
+    playerList.push_back(new Player(rivalID,Player::TwoP));
 }
