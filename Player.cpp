@@ -15,6 +15,7 @@ void Player::getHandEvent(int num) {
         playerHandHeap.push_back(HandHeap[nextHandHeap]);
         nextHandHeap++;
     }
+
 }
 
 void Player::bloodChangeEvent(int num, MainWindow::sourceOfDamage sourceOfDamage, Player* player) {
@@ -41,3 +42,14 @@ Player::Player(int i,PlayerID P) {
             break;
     }
 }
+
+//void Player::bloodSetAnime(Player player,PlayerID P) {
+//    switch (P) {
+//        case OneP:
+//
+//            break;
+//        case TwoP:
+//            break;
+//
+//    }
+//}

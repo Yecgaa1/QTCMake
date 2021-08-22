@@ -15,11 +15,7 @@ class Player : MainWindow {
 
 public:
 
-    enum PlayerID {
-        OneP,
-        TwoP,
-        ThreeP,
-    };
+
 
     // 回合事件
     Player(int i,PlayerID P);//主构造函数
@@ -31,6 +27,7 @@ public:
     void foldPhaseEvent() { doFoldPhase(this); };//弃牌阶段
     void endOfRoundEvent() {};//回合结束阶段
 
+
     //回合中事件
     void getHandEvent(int num);
 
@@ -39,6 +36,9 @@ public:
     void getPlayerHandEvent(Player* player,int num,bool type = false);
 
     void giveUpHand(Player player, int num, bool type = false);
+
+    //初始化用函数
+    void bloodSetAnime(Player player,PlayerID P);
 
     //人物参数
     int bloodTop;

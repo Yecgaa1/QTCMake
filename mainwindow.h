@@ -41,7 +41,8 @@ private slots:
     //计时器槽
     void timerWork();
     void timeout();
-    void chooseFinish();
+    void chooseFinish(vector<int> a={});
+    void PrepareRoundOfGame();
 
 
 
@@ -104,19 +105,13 @@ private:
             {kill,"杀",20,20},
             {flash,"闪",20,20},
             {peach,"桃",20,20},
-            {impeccable,"无懈可击",20,20},
+            {goHandInHand,"顺手牵羊",20,20},
              {outOfNothing,"无中生有",20,20},
             {demolitionOfTheBridgeAcrossTheRiver,"过河拆桥",8,8}
                            };
-    enum roundState
-    {
-        startOfRound=1,//回合开始阶段
-        judgmentStage=2,//判定阶段
-        drawStage=3,//摸牌阶段
-        playStage=4,//出牌阶段
-        foldPhase=5,//弃牌阶段
-        endOfRound=6,//回合结束阶段
-    };
+
+
+
 
     enum tipsType
     {
@@ -140,33 +135,57 @@ private:
         HandTmpListNode(cardSpecies Species, string name,int id) : Species(Species), name(std::move(name)),id(id),next(nullptr){}
     };
 
-    QPushButton* HandCardGroup[5];
+    vector<QPushButton*> HandCardGroup;
 
-    //英雄选择
-
+    void mainRun();
 
     void washCard();
 
     void paintEvent(QPaintEvent *event);
 
     //动画
+    int timeRound=0;//一个周期事件
     void cardAllDown();
     void cardChooseAnime(bool single,QPushButton* a,...);//手牌移动动画组,不可加入多个组目前
     void cardUpDown(bool single,QPushButton* a);
+    //void changeOpacity();等待重写为模板函数
     void askChoose(int num,tipsType tipsType,cardSpecies cardSpecies=allKind);
     void timerRun(timerType type,int sec=10);//不得大于20s
-    int timeRound=0;//一个周期事件
+    void repaintHands();//重绘手牌
+
 
     //更新tips槽
     void clear();//清空
     void showSkill(int i,QPushButton* a);//技能显示
-    void PrepareRoundOfGame();
+    void finishHeroChoose();
 
 
 
 protected:
 
+    enum roundState//回合状态机用
+    {
+        startOfRound=1,//回合开始阶段
+        judgmentStage=2,//判定阶段
+        drawStage=3,//摸牌阶段
+        playStage=4,//出牌阶段
+        foldPhase=5,//弃牌阶段
+        endOfRound=6,//回合结束阶段
+    };
 
+    enum PlayerID//玩家状态机用
+            {
+        OneP,
+        TwoP,
+        ThreeP,
+    };
+
+    struct info //游戏中状态机用
+    {
+        int playerNum=2;
+        PlayerID nowPlayerID;
+        roundState nowRoundState;
+    };
 
     enum sourceOfDamage
     {

@@ -17,13 +17,13 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="QWidget" name="HandWeight" native="true">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>690</y>
-      <width>1250</width>
-      <height>341</height>
+      <x>439</x>
+      <y>700</y>
+      <width>1001</width>
+      <height>331</height>
      </rect>
     </property>
     <widget class="QPushButton" name="card1">
@@ -222,19 +222,6 @@
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="testButton">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>50</y>
-      <width>89</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Test</string>
-    </property>
-   </widget>
    <widget class="QProgressBar" name="timeBar">
     <property name="geometry">
      <rect>
@@ -326,6 +313,392 @@ background-color: rgba(255, 255, 255,70);</string>
      </property>
     </widget>
    </widget>
+   <widget class="QWidget" name="HeroWeight1" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>700</y>
+      <width>441</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <widget class="QLabel" name="four">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>80</y>
+       <width>41</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/4.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="two">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>199</y>
+       <width>41</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/2.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="five">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>23</y>
+       <width>41</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/5.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="HeroBox">
+     <property name="geometry">
+      <rect>
+       <x>-3</x>
+       <y>-1</y>
+       <width>261</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/dashboard-avatar.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="weapons">
+     <property name="geometry">
+      <rect>
+       <x>257</x>
+       <y>-1</y>
+       <width>181</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/dashboard-equip.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="HeroHead">
+     <property name="geometry">
+      <rect>
+       <x>7</x>
+       <y>15</y>
+       <width>211</width>
+       <height>261</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/hero/47.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="three">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>139</y>
+       <width>41</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/3.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="one">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>257</y>
+       <width>41</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/1.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <zorder>HeroHead</zorder>
+    <zorder>HeroBox</zorder>
+    <zorder>weapons</zorder>
+    <zorder>three</zorder>
+    <zorder>one</zorder>
+    <zorder>four</zorder>
+    <zorder>five</zorder>
+    <zorder>two</zorder>
+   </widget>
+   <widget class="QWidget" name="HeroWeight2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>20</y>
+      <width>441</width>
+      <height>321</height>
+     </rect>
+    </property>
+    <widget class="QLabel" name="four_2">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>80</y>
+       <width>41</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/4.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="two_2">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>199</y>
+       <width>41</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/2.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="five_2">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>23</y>
+       <width>41</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/5.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="HeroBox_2">
+     <property name="geometry">
+      <rect>
+       <x>-3</x>
+       <y>-1</y>
+       <width>261</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/dashboard-avatar.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="weapons_2">
+     <property name="geometry">
+      <rect>
+       <x>257</x>
+       <y>-1</y>
+       <width>181</width>
+       <height>321</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/dashboard-equip.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="HeroHead_2">
+     <property name="geometry">
+      <rect>
+       <x>7</x>
+       <y>15</y>
+       <width>211</width>
+       <height>261</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/hero/47.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="three_2">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>139</y>
+       <width>41</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/3.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="one_2">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>257</y>
+       <width>41</width>
+       <height>56</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/1.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <zorder>HeroHead_2</zorder>
+    <zorder>HeroBox_2</zorder>
+    <zorder>weapons_2</zorder>
+    <zorder>three_2</zorder>
+    <zorder>one_2</zorder>
+    <zorder>five_2</zorder>
+    <zorder>four_2</zorder>
+    <zorder>two_2</zorder>
+   </widget>
+   <widget class="QGroupBox" name="TestBox">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>301</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>GroupBox</string>
+    </property>
+    <widget class="QPushButton" name="testButton_4">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>20</y>
+       <width>89</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Test4</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="testButton2">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>0</y>
+       <width>89</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Test2</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="testButton3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>89</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Test3</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="testButton1">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>89</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Test1</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="info">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>10</y>
+       <width>72</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Info</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="VS">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>350</y>
+      <width>331</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/other/vs.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -333,7 +706,7 @@ background-color: rgba(255, 255, 255,70);</string>
      <x>0</x>
      <y>0</y>
      <width>1440</width>
-     <height>25</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

@@ -19,18 +19,34 @@ MainWindow::MainWindow(QWidget *parent)
 
     if (changeStyle) {
         ui->timeBar->hide();
-        ui->testButton->hide();
+        ui->TestBox->hide();
         ui->YesOrNo->hide();
 
         ui->tips->setWordWrap(true);
         ui->tips->hide();
 
+        ui->HeroWeight1->hide();
+        ui->HeroWeight2->hide();
+        ui->VS->hide();
         //手牌组初始化
-        HandCardGroup[0]=ui->card1;
-        HandCardGroup[1]=ui->card2;
-        HandCardGroup[2]=ui->card3;
-        HandCardGroup[3]=ui->card4;
-        HandCardGroup[4]=ui->card5;
+        HandCardGroup.push_back(ui->card1);
+        HandCardGroup.push_back(ui->card2);
+        HandCardGroup.push_back(ui->card3);
+        HandCardGroup.push_back(ui->card4);
+        HandCardGroup.push_back(ui->card5);
+        HandCardGroup.push_back(ui->card6);
+        HandCardGroup.push_back(ui->card7);
+        HandCardGroup.push_back(ui->card8);
+        HandCardGroup.push_back(ui->card9);
+        HandCardGroup.push_back(ui->card10);
+        HandCardGroup.push_back(ui->card11);
+        HandCardGroup.push_back(ui->card12);
+        HandCardGroup.push_back(ui->card13);
+        HandCardGroup.push_back(ui->card14);
+        HandCardGroup.push_back(ui->card15);
+        for(int i=0;i<15;i++)HandCardGroup[i]->setIconSize(QSize(250, 292));
+        for(int i=4;i<15;i++)HandCardGroup[i]->hide();
+
 
     }
 

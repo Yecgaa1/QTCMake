@@ -9,6 +9,8 @@
 
 using namespace std;
 
+extern vector<Player*> playerList;//玩家对象表
+
 void MainWindow::cardAllDown() {
     for (auto &i : HandCardGroup) {
         if (i->geometry().y() == 0) {
@@ -84,14 +86,22 @@ void MainWindow::timeout() {
         //到这一步证明用户没有选择,超时处理代码
         switch(this->timerNowType)
         {
-            case choosingHeroTimer:
-                cardChooseAnime(true,ui->card2);
-                ui->timeBar->hide();
-                chooseFinish();
+            case choosingHeroTimer: {
+                vector<int> a = {1};
+                chooseFinish(a);
                 break;
+            }
             case choosingHandTimer:
                 break;
         }
 
+
+    }
+}
+
+void MainWindow::repaintHands() {
+    for(int i=0;i<playerList[0]->playerHandHeap->size;i++)
+    {
+        playerList[0]->playerHandHeap
     }
 }
