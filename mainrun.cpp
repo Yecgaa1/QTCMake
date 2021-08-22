@@ -173,7 +173,7 @@ void MainWindow::finishHeroChoose() {
     pButtonOpacity->setOpacity(1);
     ui->VS->setGraphicsEffect(pButtonOpacity);
     QPropertyAnimation *pOpacityAnimation1 = new QPropertyAnimation(pButtonOpacity, "opacity");
-    pOpacityAnimation1->setDuration(4000);
+    pOpacityAnimation1->setDuration(100);
     pOpacityAnimation1->setStartValue(1);
     pOpacityAnimation1->setEndValue(0);
     animeGroup = new QParallelAnimationGroup(this);
@@ -184,5 +184,5 @@ void MainWindow::finishHeroChoose() {
 }
 
 void MainWindow::PrepareRoundOfGame() {
-
+    playerList[0]->getHandEvent(3);
 }

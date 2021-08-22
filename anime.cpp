@@ -6,6 +6,7 @@
 #include <QPropertyAnimation>
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -100,8 +101,13 @@ void MainWindow::timeout() {
 }
 
 void MainWindow::repaintHands() {
-    for(int i=0;i<playerList[0]->playerHandHeap->size;i++)
+    QString str;
+    int num=playerList[0]->playerHandHeap.size();
+    for(int i=0;i<num;i++)HandCardGroup[i]->show();
+    for(int i=num;i<HandCardGroup.size();i++)HandCardGroup[i]->hide();
+    for(int i=0;i<num;i++)
     {
-        playerList[0]->playerHandHeap
+        QPixmap icon(str.sprintf(":/hands/%d.png",playerList[0]->playerHandHeap[i].Species));
+        HandCardGroup[i]->setIcon(icon);
     }
 }

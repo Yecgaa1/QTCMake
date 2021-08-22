@@ -151,7 +151,7 @@ private:
     //void changeOpacity();等待重写为模板函数
     void askChoose(int num,tipsType tipsType,cardSpecies cardSpecies=allKind);
     void timerRun(timerType type,int sec=10);//不得大于20s
-    void repaintHands();//重绘手牌
+    //重绘手牌
 
 
     //更新tips槽
@@ -203,5 +203,6 @@ protected:
 int nextHandHeap=0;
 
 
+    void repaintHands();
 };
 #endif // MAINWINDOW_H

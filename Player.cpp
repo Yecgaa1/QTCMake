@@ -15,7 +15,10 @@ void Player::getHandEvent(int num) {
         playerHandHeap.push_back(HandHeap[nextHandHeap]);
         nextHandHeap++;
     }
-
+    if(this->P==OneP)
+    {
+        repaintHands();
+    }
 }
 
 void Player::bloodChangeEvent(int num, MainWindow::sourceOfDamage sourceOfDamage, Player* player) {
