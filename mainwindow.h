@@ -198,6 +198,7 @@ protected:
         cardSpecies Species;
         string name;
         int id;
+        //Hands(cardSpecies Species, string name,int id) : Species(Species), name(std::move(name)),id(id){}
     }HandHeap[108];
 //摸牌堆
 int nextHandHeap=0;

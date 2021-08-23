@@ -10,7 +10,7 @@
 
 using namespace std;
 
-extern vector<Player*> playerList;//玩家对象表
+extern Player* playerList[2];//玩家对象表
 
 void MainWindow::cardAllDown() {
     for (auto &i : HandCardGroup) {
@@ -101,13 +101,18 @@ void MainWindow::timeout() {
 }
 
 void MainWindow::repaintHands() {
-    QString str;
+    char *str;
     int num=playerList[0]->playerHandHeap.size();
     for(int i=0;i<num;i++)HandCardGroup[i]->show();
     for(int i=num;i<HandCardGroup.size();i++)HandCardGroup[i]->hide();
-    for(int i=0;i<num;i++)
-    {
-        QPixmap icon(str.sprintf(":/hands/%d.png",playerList[0]->playerHandHeap[i].Species));
-        HandCardGroup[i]->setIcon(icon);
-    }
+    QPixmap icon2(tr("resource/hero/27.png"));
+    ui->card2->setIcon(icon2);
+//    for(int i=0;i<num;i++)
+//    {
+//       //sprintf(str,":/hands/%d.png",(int)playerList[0]->playerHandHeap[i].Species);
+//        //HandCardGroup[i]->setIcon(QIcon("./hands/101.png"));
+//        QPixmap icon(tr("resource/hero/27.png"));
+//        HandCardGroup[i]->setIcon(icon);
+//
+//    }
 }

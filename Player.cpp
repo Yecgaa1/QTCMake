@@ -2,17 +2,22 @@
 // Created by xtx on 2021/8/17.
 //
 
+#include <iostream>
 #include "Player.h"
 using namespace std;
 
-vector<Player*> playerList;//玩家对象表
+Player* playerList[2];//玩家对象表
 
 
 void Player::getHandEvent(int num) {
     for(int i=0;i<num;i++)
     {
-
-        playerHandHeap.push_back(HandHeap[nextHandHeap]);
+        //Hands tmp={HandHeap[nextHandHeap].Species,HandHeap[nextHandHeap].name,HandHeap[nextHandHeap].id};
+        Hands t;
+        t.Species=HandHeap[nextHandHeap].Species;
+        t.name=HandHeap[nextHandHeap].name;
+        t.id=HandHeap[nextHandHeap].id;
+        this->playerHandHeap.push_back(t);
         nextHandHeap++;
     }
     if(this->P==OneP)
