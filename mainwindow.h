@@ -31,7 +31,7 @@ public:
         finishing,
     }mainState;
     int HeroId=0;//用户最终选定的英雄
-    int chooseHero();
+    void chooseHero();
 
 
 

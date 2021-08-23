@@ -54,26 +54,27 @@ void MainWindow::washCard() {
     }
 }
 
-int MainWindow::chooseHero()//武将选择
+void MainWindow::chooseHero()//武将选择
 {
     ui->card4->hide();
 
     heroNum[1]=47;
-    QPixmap icon2(tr("resource/hero/47.png"));
-    ui->card2->setIcon(icon2);
+    QString str;
+//    QPixmap icon2(tr("resource/hero/47.png"));
+    ui->card2->setStyleSheet(QStringLiteral("border-image: url(./resource/hero/47.png);"));
 
 
     heroNum[0] = (rand() % (403));
     if (heroNum[0] == 47)heroNum[0] = (rand() % (403));
-    auto path = "resource/hero/" + to_string(heroNum[0]) + ".png";
-    QPixmap icon1(tr(path.data()));
-    ui->card1->setIcon(icon1);
+    //auto path = "resource/hero/" + to_string(heroNum[0]) + ".png";
+//    QPixmap icon1(tr(path.data()));
+    ui->card1->setStyleSheet(str.sprintf("border-image: url(./resource/hero/%d.png);",heroNum[0]));
 
     heroNum[2] = (rand() % (403));
     if (heroNum[2] == 47 || heroNum[0] == heroNum[2])heroNum[2] = (rand() % (403));
-    path = "resource/hero/" + to_string(heroNum[2]) + ".png";
-    QPixmap icon3(tr(path.data()));
-    ui->card3->setIcon(icon3);
+//    path = "resource/hero/" + to_string(heroNum[2]) + ".png";
+//    QPixmap icon3(tr(path.data()));
+    ui->card3->setStyleSheet(str.sprintf("border-image: url(./resource/hero/%d.png);",heroNum[2]));
 
 
 
@@ -100,7 +101,7 @@ int MainWindow::chooseHero()//武将选择
     mainState=choosingHero;
     connect(ui->Yes,SIGNAL(clicked()), this, SLOT(chooseFinish()));
     timerRun(choosingHeroTimer);
-    return 0;
+
 }
 
 void MainWindow::chooseFinish(vector<int> a) {
@@ -178,11 +179,12 @@ void MainWindow::finishHeroChoose() {
     pOpacityAnimation1->setEndValue(0);
     animeGroup = new QParallelAnimationGroup(this);
     animeGroup->addAnimation(pOpacityAnimation1);
-    connect(animeGroup, SIGNAL(finished()),this, SLOT(PrepareRoundOfGame()));
     animeGroup->start();
-
+    connect(animeGroup, SIGNAL(finished()),this, SLOT(PrepareRoundOfGame()),Qt::UniqueConnection);
+    return;
 }
 
 void MainWindow::PrepareRoundOfGame() {
+    disconnect(animeGroup);
     playerList[0]->getHandEvent(3);
 }

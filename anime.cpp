@@ -83,6 +83,8 @@ void MainWindow::timeout() {
     timerTemp--;
     ui->timeBar->setValue(timerTemp);
     if (timerTemp == 0) {
+        cout<<"TimeOut!";
+        disconnect(qtimer);
         qtimer->stop();
         //到这一步证明用户没有选择,超时处理代码
         switch(this->timerNowType)
@@ -104,15 +106,17 @@ void MainWindow::repaintHands() {
     char *str;
     int num=playerList[0]->playerHandHeap.size();
     for(int i=0;i<num;i++)HandCardGroup[i]->show();
-    for(int i=num;i<HandCardGroup.size();i++)HandCardGroup[i]->hide();
-    QPixmap icon2(tr("resource/hero/27.png"));
-    ui->card2->setIcon(icon2);
+    //for(int i=num;i<HandCardGroup.size();i++)HandCardGroup[i]->hide();
+    cout<<123;
+    ui->card1->setStyleSheet("");
+    ui->card1->hide();
+    //ui->card1->show();
 //    for(int i=0;i<num;i++)
 //    {
 //       //sprintf(str,":/hands/%d.png",(int)playerList[0]->playerHandHeap[i].Species);
 //        //HandCardGroup[i]->setIcon(QIcon("./hands/101.png"));
-//        QPixmap icon(tr("resource/hero/27.png"));
-//        HandCardGroup[i]->setIcon(icon);
+//        HandCardGroup[i]->setStyleSheet("border-image: url(://hands/101.png);");
+//        repaint();
 //
 //    }
 }
