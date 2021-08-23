@@ -138,10 +138,6 @@ void MainWindow::chooseFinish(vector<int> a) {
 
 void MainWindow::finishHeroChoose() {
     int rivalID=193;
-
-
-    playerList[0]=new Player(HeroNum,OneP);//-1因为hero组只有从第二个按钮开始的三个
-    playerList[1]=new Player(rivalID,TwoP);
     QString str;
 
     //原本应该再写一个函数来处理初始化的血量问题的,这里就算了

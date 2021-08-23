@@ -10,11 +10,11 @@
 
 
 bool changeStyle = true;
-bool FirstSetUp=true;
+int FirstSetUp=1;
 
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
-    if (FirstSetUp) {
+    if (FirstSetUp==3) {
         ui->setupUi(this);
         this->setWindowTitle("Hello");
         cout << "Hello?";
@@ -58,6 +58,10 @@ MainWindow::MainWindow(QWidget *parent)
         //connect(ui->testButton, SIGNAL(clicked()), this, SLOT(start()));
         //connect(qtimer, SIGNAL(timeout()), this, SLOT(timeout()));}
         FirstSetUp=false;
+    }
+    else
+    {
+        FirstSetUp++;
     }
 }
 MainWindow::~MainWindow() {

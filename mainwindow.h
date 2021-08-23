@@ -32,7 +32,12 @@ public:
     }mainState;
     int HeroId=0;//用户最终选定的英雄
     void chooseHero();
-
+    enum PlayerID//玩家状态机用
+    {
+        OneP,
+        TwoP,
+        ThreeP,
+    };
 
 
 
@@ -173,12 +178,7 @@ protected:
         endOfRound=6,//回合结束阶段
     };
 
-    enum PlayerID//玩家状态机用
-            {
-        OneP,
-        TwoP,
-        ThreeP,
-    };
+
 
     struct info //游戏中状态机用
     {
