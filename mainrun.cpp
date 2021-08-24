@@ -140,6 +140,9 @@ void MainWindow::finishHeroChoose() {
     int rivalID=193;
     QString str;
 
+    playerList[0]=new Player(47,OneP);//-1因为hero组只有从第二个按钮开始的三个
+    playerList[1]=new Player(193,TwoP);
+
     //原本应该再写一个函数来处理初始化的血量问题的,这里就算了
 
     for(int i=0;i<2;i++)
@@ -151,7 +154,7 @@ void MainWindow::finishHeroChoose() {
                 ui->four->hide();
                 ui->five->hide();
                 break;
-            caseTwoP:
+            case TwoP:
                 ui->HeroHead_2->setStyleSheet(str.sprintf("border-image: url(resource/hero/%d.png);",rivalID));
                 ui->five_2->hide();
                 break;

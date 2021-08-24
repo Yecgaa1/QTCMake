@@ -4,10 +4,12 @@
 
 #include <iostream>
 #include "Player.h"
+#include "value.h"
 using namespace std;
 
 Player* playerList[2];//玩家对象表
 
+extern MainWindow w;
 
 void Player::getHandEvent(int num) {
     for(int i=0;i<num;i++)
@@ -22,11 +24,11 @@ void Player::getHandEvent(int num) {
     }
     if(this->P==OneP)
     {
-        repaintHands();
+        w.repaintHands();
     }
 }
 
-void Player::bloodChangeEvent(int num, MainWindow::sourceOfDamage sourceOfDamage, Player* player) {
+void Player::bloodChangeEvent(int num, sourceOfDamage sourceOfDamage, Player* player) {
     this->bloodNow-=num;
     this->HandTop-=num;
 }

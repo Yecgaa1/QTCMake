@@ -7,9 +7,10 @@
 
 //#include "mainwindow.h"
 #include "Player.h"
+#include "value.h"
+#include "mainwindow.h"
 
-
-
+extern MainWindow w;
 
 void run();
 

@@ -12,14 +12,14 @@ using namespace std;
 
 extern Player* playerList[2];
 
+int argc;
+char *argv[]={};
+QApplication a(argc, argv);
+MainWindow w;
+
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
 
-    playerList[0]=new Player(47,MainWindow::OneP);//-1因为hero组只有从第二个按钮开始的三个
-    playerList[1]=new Player(193,MainWindow::TwoP);
-
-    MainWindow w;
     w.show();
     return a.exec();
 }

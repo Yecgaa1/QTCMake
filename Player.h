@@ -6,12 +6,15 @@
 #define QTCMAKE_PLAYER_H
 
 
-#include "mainwindow.h"
+#include "main.h"
+#include "value.h"
 
 using namespace std;
 
+extern MainWindow w;
+extern Hands HandHeap[108];
 
-class Player : MainWindow {
+class Player {
 
 public:
 
@@ -47,6 +50,7 @@ public:
     vector<Hands> playerHandHeap;
     PlayerID P;
 private:
+
     void doJudgmentStage(Player* player);
 
     void doDrawStage(Player* player);

@@ -12,6 +12,8 @@ using namespace std;
 
 extern Player* playerList[2];//玩家对象表
 
+extern vector<QPushButton*> HandCardGroup;
+
 void MainWindow::cardAllDown() {
     for (auto &i : HandCardGroup) {
         if (i->geometry().y() == 0) {
@@ -103,20 +105,21 @@ void MainWindow::timeout() {
 }
 
 void MainWindow::repaintHands() {
-    char *str;
+    QString str;
+    int base=0;
     int num=playerList[0]->playerHandHeap.size();
     for(int i=0;i<num;i++)HandCardGroup[i]->show();
-    //for(int i=num;i<HandCardGroup.size();i++)HandCardGroup[i]->hide();
-    cout<<123;
-    ui->card1->setStyleSheet("");
-    ui->card1->hide();
-    //ui->card1->show();
-//    for(int i=0;i<num;i++)
-//    {
-//       //sprintf(str,":/hands/%d.png",(int)playerList[0]->playerHandHeap[i].Species);
-//        //HandCardGroup[i]->setIcon(QIcon("./hands/101.png"));
-//        HandCardGroup[i]->setStyleSheet("border-image: url(://hands/101.png);");
-//        repaint();
-//
-//    }
+    for(int i=num;i<HandCardGroup.size();i++)HandCardGroup[i]->hide();
+    if(num>4)base=1000/num;
+    else base=250;
+    for(int i=0;i<num;i++)
+    {
+        //绘制背景
+       //sprintf(str,":/hands/%d.png",(int)playerList[0]->playerHandHeap[i].Species);
+        //HandCardGroup[i]->setIcon(QIcon("./hands/101.png"));
+        HandCardGroup[i]->setStyleSheet(str.sprintf("border-image: url(://hands/%d.png);",playerList[0]->playerHandHeap[i].Species));
+
+        //刷新所有牌的位置在下
+        HandCardGroup[i]->setGeometry(QRect(base*i, 50, 250, 292));
+    }
 }
