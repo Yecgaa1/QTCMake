@@ -84,22 +84,22 @@ void MainWindow::chooseHero()//武将选择
         cardChooseAnime(true,ui->card1);
 
         ui->card1->setEnabled(true);
-    });
+    },Qt::UniqueConnection);
     connect(ui->card2,&QPushButton::clicked,this,[=]{
         ui->card2->setEnabled(false);
         showSkill(heroNum[1],ui->card2);
         cardChooseAnime(true,ui->card2);
         ui->card2->setEnabled(true);
-    });
+    },Qt::UniqueConnection);
     connect(ui->card3,&QPushButton::clicked,this,[=]{
         ui->card3->setEnabled(false);
         showSkill(heroNum[2],ui->card3);
         cardChooseAnime(true,ui->card3);
 
         ui->card3->setEnabled(true);
-    });
+    },Qt::UniqueConnection);
     mainState=choosingHero;
-    connect(ui->Yes,SIGNAL(clicked()), this, SLOT(chooseFinish()));
+    connect(ui->Yes,SIGNAL(clicked()), this, SLOT(chooseFinish()),Qt::UniqueConnection);
     timerRun(choosingHeroTimer);
 
 }
@@ -185,5 +185,7 @@ void MainWindow::finishHeroChoose() {
 
 void MainWindow::PrepareRoundOfGame() {
     disconnect(animeGroup);
+    ui->TestBox->show();
+    connect(ui->testButton1,&QPushButton::clicked,this,[=]{playerList[0]->getHandEvent(1);});
     playerList[0]->getHandEvent(3);
 }
