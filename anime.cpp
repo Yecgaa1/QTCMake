@@ -110,19 +110,19 @@ void MainWindow::repaintHands() {
     int num=playerList[0]->playerHandHeap.size();
     for(int i=0;i<num;i++)HandCardGroup[i]->show();
     for(int i=num;i<HandCardGroup.size();i++)HandCardGroup[i]->hide();
-    if(num>4)base=750/num;
-    else base=250;
+    if(num>4)base=800/num;
+    else base=200;
     for(int i=0;i<num;i++)
     {
         //绘制背景
 
-        //HandCardGroup[i]->setIcon(QIcon(str.sprintf(":/hands/%d.png",(int)playerList[0]->playerHandHeap[i].Species)));
-        HandCardGroup[i]->setStyleSheet(str.sprintf("border-image: url(://hands/%d.png);",playerList[0]->playerHandHeap[i].Species));
+        HandCardGroup[i]->setIcon(QIcon(str.sprintf(":/hands/%d.png",playerList[0]->playerHandHeap[i].Species)));
+        //HandCardGroup[i]->setStyleSheet(str.sprintf("border-image: url(://hands/%d.png);",playerList[0]->playerHandHeap[i].Species));
 
         //刷新所有牌的位置在下
-        HandCardGroup[i]->setGeometry(QRect(base*i, 50, 250, 292));
+        HandCardGroup[i]->setGeometry(QRect(base*i, 50, 200, 290));
         HandCardGroup[i]->raise();
 
-        //HandCardGroup[i]->setToolTip(QString::fromStdString(playerList[0]->playerHandHeap[i].name));
+        HandCardGroup[i]->setToolTip(QString::fromStdString(playerList[0]->playerHandHeap[i].name));
     }
 }

@@ -46,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent)
             HandCardGroup.push_back(ui->card13);
             HandCardGroup.push_back(ui->card14);
             HandCardGroup.push_back(ui->card15);
-            for (int i = 0; i < 15; i++)HandCardGroup[i]->setIconSize(QSize(250, 292));
+            for (int i = 0; i < 3; i++)HandCardGroup[i]->setIconSize(QSize(250, 292));
             for (int i = 4; i < 15; i++)HandCardGroup[i]->hide();
 
 

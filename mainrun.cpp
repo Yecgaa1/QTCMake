@@ -167,6 +167,13 @@ void MainWindow::finishHeroChoose() {
     ui->card2->disconnect();
     ui->card3->disconnect();
 
+    for(auto & i : HandCardGroup) {
+        i->hide();
+        i->setGeometry(QRect(0, 0, 200, 290));//重设大小
+        i->setIconSize(QSize(200, 290));
+        i->setStyleSheet("");
+        }
+
     //绘制vs的动画,并趁机释放qt进度系统
     ui->VS->show();
     QGraphicsOpacityEffect *pButtonOpacity = new QGraphicsOpacityEffect(this);
