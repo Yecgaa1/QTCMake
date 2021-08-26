@@ -15,11 +15,11 @@ void Player::getHandEvent(int num) {
     for(int i=0;i<num;i++)
     {
         //Hands tmp={HandHeap[nextHandHeap].Species,HandHeap[nextHandHeap].name,HandHeap[nextHandHeap].id};
-        Hands t;
-        t.Species=HandHeap[nextHandHeap].Species;
-        t.name=HandHeap[nextHandHeap].name;
-        t.id=HandHeap[nextHandHeap].id;
-        this->playerHandHeap.push_back(t);
+//        Hands t;
+//        t.Species=HandHeap[nextHandHeap].Species;
+//        t.name=HandHeap[nextHandHeap].name;
+//        t.id=HandHeap[nextHandHeap].id;
+        this->playerHandHeap.push_back(HandHeap[nextHandHeap]);
         nextHandHeap++;
     }
     if(this->P==OneP)
@@ -63,3 +63,24 @@ Player::Player(int i,PlayerID P) {
 //
 //    }
 //}
+void Player::doJudgmentStage(PlayerID PlayerID)//判定阶段
+{
+    for(int i=0;i<judgmentHand.size();i++)
+    {
+        //判定牌逻辑
+    }
+    judgmentHand.clear();
+}
+
+void Player::doDrawStage(PlayerID PlayerID)//摸牌阶段
+{
+    getHandEvent(2);
+}
+
+void Player::doPlayStage(PlayerID PlayerID) {
+    w.askChoose(PlayerID,1,OutHand);
+}
+
+void Player::doFoldPhase(PlayerID PlayerID) {
+
+}

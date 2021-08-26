@@ -19,5 +19,6 @@
         <file>hands/202.png</file>
         <file>hands/203.png</file>
         <file>hands/204.png</file>
+        <file>other/next.png</file>
     </qresource>
 </RCC>

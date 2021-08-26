@@ -19,45 +19,69 @@ class Player {
 public:
 
 
-
     // 回合事件
-    Player(int i,PlayerID P);//主构造函数
+    Player(int i, PlayerID P);//主构造函数
 
-    void startOfRoundEvent() {};//回合开始阶段
-    void judgmentStageEvent() { doJudgmentStage(this); };//判定阶段
-    void drawStageEvent() { doDrawStage(this); };//摸牌阶段
-    void playStageEvent() { doPlayStage(this); };//出牌阶段
-    void foldPhaseEvent() { doFoldPhase(this); };//弃牌阶段
-    void endOfRoundEvent() {};//回合结束阶段
+    void startOfRoundEvent(PlayerID PlayerID) {
+        gameInfo.nowRoundState = judgmentStage;
+        isInit = true;
+    };//回合开始阶段
+    void judgmentStageEvent(PlayerID PlayerID) {
+        doJudgmentStage(PlayerID);
+        gameInfo.nowRoundState = drawStage;
+        isInit = true;
+    };//判定阶段
+    void drawStageEvent(PlayerID PlayerID) {
+        doDrawStage(PlayerID);
+        gameInfo.nowRoundState = playStage;
+        isInit = true;
+    };//摸牌阶段
+    void playStageEvent(PlayerID PlayerID) {
+        doPlayStage(PlayerID);
+        //gameInfo.nowRoundState = foldPhase;
+        //isInit = true;
+    };//出牌阶段
+    void foldPhaseEvent(PlayerID PlayerID) {
+        doFoldPhase(PlayerID);
+        //gameInfo.nowRoundState = endOfRound;
+    };//弃牌阶段
+    void endOfRoundEvent(PlayerID PlayerID) {
+        gameInfo.nowRoundState = startOfRound;
+        if (gameInfo.nowPlayerID == OneP)gameInfo.nowPlayerID = TwoP;
+        else gameInfo.nowPlayerID = OneP;
+        isInit = true;
+    };//回合结束阶段
 
 
     //回合中事件
     void getHandEvent(int num);
 
-    void bloodChangeEvent(int num, sourceOfDamage sourceOfDamage = None, Player* player = nullptr);
+    void bloodChangeEvent(int num, sourceOfDamage sourceOfDamage = None, Player *player = nullptr);
 
-    void getPlayerHandEvent(Player* player,int num,bool type = false);
+    void getPlayerHandEvent(Player *player, int num, bool type = false);
 
     void giveUpHand(Player player, int num, bool type = false);
 
     //初始化用函数
-    void bloodSetAnime(Player player,PlayerID P);
+    //void bloodSetAnime(Player player, PlayerID P);
 
     //人物参数
     int bloodTop;
     int bloodNow = bloodTop;
     int HandTop = bloodNow;
     vector<Hands> playerHandHeap;
+    vector<Hands> judgmentHand;
     PlayerID P;
+    int useKillNum = 1;
 private:
 
-    void doJudgmentStage(Player* player);
+    void doJudgmentStage(PlayerID PlayerID);
 
-    void doDrawStage(Player* player);
+    void doDrawStage(PlayerID PlayerID);
 
-    void doPlayStage(Player* player);
+    void doPlayStage(PlayerID PlayerID);
 
-    void doFoldPhase(Player* player);
+    void doFoldPhase(PlayerID PlayerID);
 
 };
 

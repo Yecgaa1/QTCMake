@@ -28,7 +28,7 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 aux_source_directory(./ PROJECT_SOURCES)
-aux_source_directory(./interactive_buttons SRC_LIST) #搜索当前目录下的所有.cpp文件
+#aux_source_directory(./interactive_buttons SRC_LIST) #搜索当前目录下的所有.cpp文件
 include_directories("./interactive_buttons")
 
 #set(PROJECT_SOURCES

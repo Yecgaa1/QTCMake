@@ -9,19 +9,20 @@ using namespace std;
 
 enum PlayerID//玩家状态机用
 {
-    OneP,
-    TwoP,
-    ThreeP,
+    OneP=0,
+    TwoP=1,
+    //ThreeP,
 };
 
 
 enum tipsType
 {
-    giveUp
+    giveUp,
+    OutHand
 };
 enum timerType
 {
-    choosingHandTimer,
+    playingHandTimer,
     choosingHeroTimer,
 };
 enum cardSpecies
@@ -85,14 +86,17 @@ struct info //游戏中状态机用
 };
 
 
-struct Hands
-{
-    cardSpecies Species;
-    string name;
-    int id;
-    //Hands(cardSpecies Species, string name,int id) : Species(Species), name(std::move(name)),id(id){}
-};
-extern int nextHandHeap;
-extern Hands HandHeap[108];
 
+
+enum mainStateEnum//外部主状态标志
+{
+    choosingHero,
+    playing,
+    finishing,
+};
+
+extern int nextHandHeap;
+extern info gameInfo;
+extern mainStateEnum mainState;
+extern bool isInit;
 #endif //QTCMAKE_VALUE_H

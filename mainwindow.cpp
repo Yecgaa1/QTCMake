@@ -3,16 +3,17 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include <QTimer>
-#include <interactivebuttonbase.h>
-#include <waterfloatbutton.h>
-#include <waterzoombutton.h>
 #include <iostream>
+#include <QPainter>
 
 
 bool changeStyle = true;
 int FirstSetUp=1;
 Hands HandHeap[108];
 int nextHandHeap=0;
+info gameInfo;
+mainStateEnum mainState;
+bool isInit=true;//主状态机用
 
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {

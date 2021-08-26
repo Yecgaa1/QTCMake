@@ -266,12 +266,24 @@ border:1.2px solid #808080;
       <height>151</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>萝莉体 第二版</family>
+      <pointsize>11</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">font: 11pt &quot;萝莉体 第二版&quot;;
 background-color: rgba(255, 255, 255,70);</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QWidget" name="YesOrNo" native="true">

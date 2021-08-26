@@ -20,25 +20,21 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
+//void changeOpacity();等待重写为模板函数
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    enum mainStateEnum//主状态机
-    {
-        choosingHero,
-        playing,
-        finishing,
-    }mainState;
+
     int HeroId=0;//用户最终选定的英雄
     void chooseHero();
-//    enum PlayerID//玩家状态机用
-//    {
-//        OneP,
-//        TwoP,
-//        ThreeP,
-//    };
-    void repaintHands();
+    void repaintHands(bool isSetLocated=true);//手牌重绘,仅可用于对手牌而不是武将牌
+    void askChoose(PlayerID PlayerID,int num,tipsType tipsType,cardSpecies cardSpecies=allKind);
+
+
+
 
 
 private slots:
@@ -48,6 +44,7 @@ private slots:
     void timeout();
     void chooseFinish(vector<int> a={});
     void PrepareRoundOfGame();
+    void MainStateMachine();//主状态机
 
 
 
@@ -58,6 +55,12 @@ private:
     QParallelAnimationGroup *animeGroup;
     QTimer *qtimer=new QTimer();
     int timerTemp=100;//计时器用,代表进度百分比
+
+    //主状态机用
+    QTimer *MainStateTimer=new QTimer();
+
+    //手牌大小(为了迎合手牌和英雄牌大小区别的问题)
+    int width=250,height=292;
 
     struct cardLib
     {
@@ -90,7 +93,7 @@ private:
 
     vector<QPushButton*> HandCardGroup;
 
-    void mainRun();
+
 
     void washCard();
 
@@ -101,10 +104,10 @@ private:
     void cardAllDown();
     void cardChooseAnime(bool single,QPushButton* a,...);//手牌移动动画组,不可加入多个组目前
     void cardUpDown(bool single,QPushButton* a);
-    //void changeOpacity();等待重写为模板函数
-    void askChoose(int num,tipsType tipsType,cardSpecies cardSpecies=allKind);
+    void setHandLevel();
+
     void timerRun(timerType type,int sec=10);//不得大于20s
-    //重绘手牌
+
 
 
     //更新tips槽
@@ -112,10 +115,26 @@ private:
     void showSkill(int i,QPushButton* a);//技能显示
     void finishHeroChoose();
 
-
+    void callHandFunction(void (MainWindow::*handFunction)());//回调牌功能
+    //各手牌功能回调函数
+    void function_kill();
 
 //摸牌堆
 
 
 };
+
+typedef void (MainWindow::*handFunction)();
+
+struct Hands
+{
+    cardSpecies Species;
+    string name;
+    int id;
+    //下面为可选数据点
+    handFunction handFunction;
+    bool isUseInPlayingRound=false;
+    //Hands(cardSpecies Species, string name,int id) : Species(Species), name(std::move(name)),id(id){}
+};
+
 #endif // MAINWINDOW_H
