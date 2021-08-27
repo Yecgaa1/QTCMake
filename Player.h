@@ -8,7 +8,7 @@
 
 #include "main.h"
 #include "value.h"
-
+#include "ui_mainwindow.h"
 using namespace std;
 
 extern MainWindow w;
@@ -71,6 +71,7 @@ public:
     int HandTop = bloodNow;
     vector<Hands> playerHandHeap;
     vector<Hands> judgmentHand;
+    QPushButton* headBox;
     PlayerID P;
     int useKillNum = 1;
 private:

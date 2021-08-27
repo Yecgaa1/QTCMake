@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#define PLAYERNUM 2
 #include <QMainWindow>
 #include <QParallelAnimationGroup>
 #include <QPushButton>
@@ -105,6 +106,7 @@ private:
     void cardChooseAnime(bool single,QPushButton* a,...);//手牌移动动画组,不可加入多个组目前
     void cardUpDown(bool single,QPushButton* a);
     void setHandLevel();
+    void askChooseAnime(PlayerID PlayerID,void (MainWindow::*Function)(int i),bool isDistanceCheck=false);
 
     void timerRun(timerType type,int sec=10);//不得大于20s
 
@@ -115,16 +117,16 @@ private:
     void showSkill(int i,QPushButton* a);//技能显示
     void finishHeroChoose();
 
-    void callHandFunction(void (MainWindow::*handFunction)());//回调牌功能
+    void callHandFunction(void (MainWindow::*handFunction)(int),int i=0);//回调牌功能
     //各手牌功能回调函数
-    void function_kill();
+    void function_kill(int i=0);
 
 //摸牌堆
 
 
 };
 
-typedef void (MainWindow::*handFunction)();
+typedef void (MainWindow::*handFunction)(int i);
 
 struct Hands
 {

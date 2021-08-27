@@ -11,6 +11,31 @@ Player* playerList[2];//玩家对象表
 
 extern MainWindow w;
 
+Player::Player(int i,PlayerID P) {
+    //由于确认是两人游戏了
+    //就不写2P以上的背景渲染了
+
+    this->P=P;
+    switch(i)
+    {
+        case 47:
+            bloodTop=bloodNow=HandTop=3;
+            break;
+        case 193:
+            bloodTop=bloodNow=HandTop=4;
+            break;
+    }
+    switch(P)
+    {
+
+        case OneP:
+            headBox=ui->
+            break;
+        case TwoP:
+            break;
+    }
+}
+
 void Player::getHandEvent(int num) {
     for(int i=0;i<num;i++)
     {
@@ -37,21 +62,7 @@ void Player::giveUpHand(Player player, int num, bool type) {
 
 }
 
-Player::Player(int i,PlayerID P) {
-    //由于确认是两人游戏了
-    //就不写2P以上的背景渲染了
 
-    this->P=P;
-    switch(i)
-    {
-        case 47:
-            bloodTop=bloodNow=HandTop=3;
-            break;
-        case 193:
-            bloodTop=bloodNow=HandTop=4;
-            break;
-    }
-}
 
 //void Player::bloodSetAnime(Player player,PlayerID P) {
 //    switch (P) {

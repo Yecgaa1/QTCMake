@@ -385,22 +385,6 @@ background-color: rgba(255, 255, 255,70);</string>
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="HeroBox">
-     <property name="geometry">
-      <rect>
-       <x>-3</x>
-       <y>-1</y>
-       <width>261</width>
-       <height>331</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/other/dashboard-avatar.png);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QLabel" name="weapons">
      <property name="geometry">
       <rect>
@@ -460,6 +444,22 @@ background-color: rgba(255, 255, 255,70);</string>
      </property>
      <property name="styleSheet">
       <string notr="true">border-image: url(:/other/1.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="HeroBox">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>261</width>
+       <height>321</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/dashboard-avatar.png);</string>
      </property>
      <property name="text">
       <string/>
@@ -531,22 +531,6 @@ background-color: rgba(255, 255, 255,70);</string>
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="HeroBox_2">
-     <property name="geometry">
-      <rect>
-       <x>-3</x>
-       <y>-1</y>
-       <width>261</width>
-       <height>331</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/other/dashboard-avatar.png);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QLabel" name="weapons_2">
      <property name="geometry">
       <rect>
@@ -606,6 +590,22 @@ background-color: rgba(255, 255, 255,70);</string>
      </property>
      <property name="styleSheet">
       <string notr="true">border-image: url(:/other/1.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="HeroBox_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>261</width>
+       <height>321</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/dashboard-avatar.png);</string>
      </property>
      <property name="text">
       <string/>

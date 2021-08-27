@@ -169,3 +169,14 @@ void MainWindow::repaintHands(bool isSetLocated) {
 void MainWindow::setHandLevel() {
     for (auto &i : HandCardGroup) i->raise();
 }
+
+void MainWindow::askChooseAnime(PlayerID PlayerID,void (MainWindow::*Function)(int),bool isDistanceCheck=false) {
+
+    if(isDistanceCheck);
+    for(int i=0;i<PLAYERNUM;i++)
+    {
+        if(i==PlayerID)continue;
+
+
+    }
+}
