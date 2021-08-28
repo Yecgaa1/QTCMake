@@ -632,8 +632,8 @@ background-color: rgba(255, 255, 255,70);</string>
     <widget class="QLabel" name="isHeroChoose_2">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>20</y>
+       <x>7</x>
+       <y>19</y>
        <width>211</width>
        <height>251</height>
       </rect>

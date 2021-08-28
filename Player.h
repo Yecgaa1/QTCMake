@@ -20,7 +20,7 @@ public:
 
 
     // 回合事件
-    Player(int i, PlayerID P,);//主构造函数
+    Player(int i, PlayerID P,QLabel* blood[5]);//主构造函数
 
     void startOfRoundEvent(PlayerID PlayerID) {
         gameInfo.nowRoundState = judgmentStage;
@@ -74,6 +74,7 @@ public:
     QPushButton* headBox;
     PlayerID P;
     int useKillNum = 1;
+    QLabel* blood[5];
 private:
 
     void doJudgmentStage(PlayerID PlayerID);

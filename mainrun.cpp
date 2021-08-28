@@ -194,7 +194,7 @@ void MainWindow::chooseFinish(vector<int> a) {
             switch (gameInfo.nowRoundState)
             {
                 case playStage:
-                    callHandFunction(OneP,&MainWindow::function_kill);
+                    callHandFunction(OneP,upHand[0],&MainWindow::function_kill);
                     break;
                 case foldPhase:
                     break;
@@ -208,9 +208,11 @@ void MainWindow::chooseFinish(vector<int> a) {
 void MainWindow::finishHeroChoose() {
     int rivalID = 193;
     QString str;
+    QLabel* blood1[5]={ui->one,ui->two,ui->three,ui->four,ui->five};
+    QLabel* blood2[5]={ui->one_2,ui->two_2,ui->three_2,ui->four_2,ui->five_2};
 
-    playerList[0] = new Player(47, OneP);//-1因为hero组只有从第二个按钮开始的三个
-    playerList[1] = new Player(193, TwoP);
+    playerList[0] = new Player(47, OneP,blood1);//-1因为hero组只有从第二个按钮开始的三个
+    playerList[1] = new Player(193, TwoP,blood2);
 
     //原本应该再写一个函数来处理初始化的血量问题的,这里就算了
 
@@ -266,7 +268,7 @@ void MainWindow::finishHeroChoose() {
 void MainWindow::PrepareRoundOfGame() {
     disconnect(animeGroup);
     ui->TestBox->show();
-    connect(ui->testButton1, &QPushButton::clicked, this, [=] { playerList[0]->getHandEvent(1); });
+    connect(ui->testButton1, &QPushButton::clicked, this, [=] { playerList[1]->bloodChangeEvent(1); });
     playerList[0]->getHandEvent(4);
     playerList[1]->getHandEvent(4);
 

@@ -11,10 +11,10 @@ using namespace std;
 
 extern MainWindow w;
 
-Player::Player(int i,PlayerID P) {
+Player::Player(int i,PlayerID P,QLabel* blood[5]) {
     //由于确认是两人游戏了
     //就不写2P以上的背景渲染了
-
+    memcpy(this->blood,blood,20);
     this->P=P;
     switch(i)
     {
@@ -55,7 +55,16 @@ void Player::getHandEvent(int num) {
 void Player::bloodChangeEvent(int num, sourceOfDamage sourceOfDamage,PlayerID PlayerID) {
     this->bloodNow-=num;
     this->HandTop-=num;
-    if(bloodNow>=5)
+    if(bloodNow>=5)blood[4]->show();
+    else blood[4]->hide();
+    if(bloodNow>=4)blood[3]->show();
+    else blood[3]->hide();
+    if(bloodNow>=3)blood[2]->show();
+    else blood[2]->hide();
+    if(bloodNow>=2)blood[1]->show();
+    else blood[1]->hide();
+    if(bloodNow>=1)blood[0]->show();
+    else blood[0]->hide();
 }
 
 void Player::giveUpHand(Player player, int num, bool type) {

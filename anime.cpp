@@ -170,6 +170,9 @@ void MainWindow::setHandLevel() {
     for (auto &i : HandCardGroup) i->raise();
 }
 
+void MainWindow::disconnectHands() {
+    for (auto &i : HandCardGroup) i->disconnect();
+}
 /*
 void MainWindow::askChooseAnime(PlayerID PlayerID,void (MainWindow::*Function)(),bool isDistanceCheck=false) {
 

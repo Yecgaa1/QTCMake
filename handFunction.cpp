@@ -9,10 +9,12 @@
 
 using namespace std;
 extern Player* playerList[2];//玩家对象表
+int whichHandUsed;
 PlayerID whoUse;//会被每次牌的使用而即时改变的变量
 
-void MainWindow::callHandFunction(PlayerID PlayerID,void (MainWindow::*handFunction)()) {
+void MainWindow::callHandFunction(PlayerID PlayerID,int HandsID,void (MainWindow::*handFunction)()) {
     whoUse=PlayerID;
+    whichHandUsed=HandsID;
     (this->*handFunction)();
 }
 
@@ -24,7 +26,12 @@ void MainWindow::function_kill() {
         ui->isHeroChoose_2->show();
         ui->YesOrNo->show();
         connect(ui->Yes, &QPushButton::clicked, this, [=] {
-            playerList[TwoP]->bloodChangeEvent(1,player,)
+            ui->isHeroChoose_2->hide();
+            playerList[TwoP]->bloodChangeEvent(1,player,whoUse);
+            playerList[whoUse]->playerHandHeap.erase(playerList[whoUse]->playerHandHeap.begin()+whichHandUsed);
+            isInit=true;
+            repaintHands();
+            disconnectHands();
         });
     });
 }
