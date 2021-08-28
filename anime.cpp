@@ -15,35 +15,45 @@ extern Player *playerList[2];//玩家对象表
 extern vector<QPushButton *> HandCardGroup;
 
 
-void MainWindow::cardAllDown() {
+void MainWindow::cardAllDown(int hasAnimeHands[15]) {
+    int j=0;
     for (auto &i : HandCardGroup) {
         if (i->geometry().y() == 0) {
             auto *pScaleAnimation1 = new QPropertyAnimation(i, "geometry");
             pScaleAnimation1->setStartValue(QRect(i->geometry().x(), 0, width, height));//初状态
             pScaleAnimation1->setEndValue(QRect(i->geometry().x(), 50, width, height));//末状态
             animeGroup->addAnimation(pScaleAnimation1);
+            hasAnimeHands[j]=1;
+
         }
+        j++;
     }
 
 }
 
-void MainWindow::cardChooseAnime(int i, QPushButton *a, ...) {
+void MainWindow::cardChooseAnime(int topNum, QPushButton *a) {
+    //其实应该考虑一下传入一个第几位这个数字更好,而不是传入一个按钮,还有就是这里不知道为啥会判断这个隐藏控件的位置天花乱坠
+    //不想改接口了,就写死player1吧.
+    //好像问题也不大,毕竟服务端渲染啥啊 2021年8月29日01:11:35
+    int nowUpHandsNum=0,upHandNum;
+    int hasAnimeHands[15];
+    int j=0;
+    for (auto &i : HandCardGroup) {
+        if (i->geometry().y() == 0) {
+            nowUpHandsNum++;
+        }
+        if(i==a)upHandNum=j;
+        //if(mainState==choosingHero&&j==3)break;
+        //else if(j==playerList[0]->playerHandHeap.size())break;
+        j++;
+    }
     bool isWantTop = false;
     if (a->geometry().y() == 50)isWantTop = true;
     //此时如果是50就是下方,0就是上方
     animeGroup = new QParallelAnimationGroup(this);
-    if (single)cardAllDown();
-//    va_list ap;
-//    va_start(ap, a);
-//    QPushButton* i;//遍历
+    if (nowUpHandsNum>=topNum)cardAllDown(hasAnimeHands);
+    cardUpDown(hasAnimeHands, upHandNum);
 
-//    while(true) {
-//        i=va_arg( ap, QPushButton*);
-//        cout<<i;
-//        if(i==ui->testButton)break;
-    cardUpDown(single, a);
-
-//   }
     if (mainState == playing) {
         //TODO: 原来打算说先等上下动画绘制完再做分层(emmm其实本身也不太好),结果发现下来的时候connect不成功
 //        cout<<123;
@@ -62,21 +72,23 @@ void MainWindow::cardChooseAnime(int i, QPushButton *a, ...) {
     animeGroup->start();
 }
 
-void MainWindow::cardUpDown(bool single, QPushButton *a) {
+void MainWindow::cardUpDown( int hasAnimeHands[15],int upHandNum) {
+    QPushButton *a=HandCardGroup[upHandNum];
     int y = a->geometry().y();
 
     bool isTop = y != 50;
     auto *pScaleAnimation1 = new QPropertyAnimation(a,
                                                     "geometry");//geometry大小位置，pos角度，透明度后面说，见https://blog.csdn.net/weixin_42347660/article/details/113314656
     pScaleAnimation1->setDuration(100);//时间
-    if (isTop && !single) {
-
+    if (isTop) {
+        if(hasAnimeHands[upHandNum]==1)return;
         pScaleAnimation1->setStartValue(QRect(a->geometry().x(), 0, width, height));//初状态
         pScaleAnimation1->setEndValue(QRect(a->geometry().x(), 50, width, height));//末状态
     } else {
         pScaleAnimation1->setStartValue(QRect(a->geometry().x(), 50, width, height));//初状态
         pScaleAnimation1->setEndValue(QRect(a->geometry().x(), 0, width, height));//末状态
     }
+    hasAnimeHands[upHandNum]=1;
     animeGroup->addAnimation(pScaleAnimation1);
 }
 
@@ -88,7 +100,8 @@ void MainWindow::askChoose(PlayerID PlayerID, int num, tipsType tipsType, cardSp
             ui->tips->setText(str.sprintf("请弃置%d张牌", num));
             for (int i = 0; i < playerList[PlayerID]->playerHandHeap.size(); i++) {
                 connect(HandCardGroup[i], &QPushButton::clicked, this, [=] {
-                    cardChooseAnime(false, HandCardGroup[i]);
+                    cardChooseAnime(num, HandCardGroup[i]);
+
                 });
             }
             break;
@@ -113,7 +126,7 @@ void MainWindow::askChoose(PlayerID PlayerID, int num, tipsType tipsType, cardSp
                 }//不能满血吃桃
                 //绑定槽
                 connect(HandCardGroup[i], &QPushButton::clicked, this, [=] {
-                    cardChooseAnime(true, HandCardGroup[i]);
+                    cardChooseAnime(1, HandCardGroup[i]);
                 });
             }
             break;

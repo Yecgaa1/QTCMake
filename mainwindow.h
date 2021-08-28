@@ -102,9 +102,9 @@ private:
 
     //动画
     int timeRound=0;//一个周期事件
-    void cardAllDown();
-    void cardChooseAnime(int i,QPushButton* a,...);//手牌移动动画组,不可加入多个组目前
-    void cardUpDown(bool single,QPushButton* a);
+    void cardAllDown(int hasAnimeHands[15]);
+    void cardChooseAnime(int topNum,QPushButton* a);//手牌移动动画组,不可加入多个组目前
+    void cardUpDown(int hasAnimeHands[15], int upHandNum);
     void setHandLevel();
     void disconnectHands();
     void askChooseAnime(PlayerID PlayerID,void (MainWindow::*Function)(int i),bool isDistanceCheck=false);

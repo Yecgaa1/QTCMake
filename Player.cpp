@@ -110,5 +110,5 @@ void Player::doFoldPhase(PlayerID PlayerID) {
         isInit = true;
         gameInfo.nowRoundState = endOfRound;
     }
-    w.askChoose(PlayerID,i,OutHand);
+    w.askChoose(PlayerID,i,giveUp);
 }
