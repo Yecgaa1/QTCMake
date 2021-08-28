@@ -43,6 +43,7 @@ public:
     };//出牌阶段
     void foldPhaseEvent(PlayerID PlayerID) {
         doFoldPhase(PlayerID);
+        //isInit = true;
         //gameInfo.nowRoundState = endOfRound;
     };//弃牌阶段
     void endOfRoundEvent(PlayerID PlayerID) {

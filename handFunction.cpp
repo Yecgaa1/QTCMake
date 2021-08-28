@@ -29,6 +29,7 @@ void MainWindow::function_kill() {
             ui->isHeroChoose_2->hide();
             playerList[TwoP]->bloodChangeEvent(1,player,whoUse);
             playerList[whoUse]->playerHandHeap.erase(playerList[whoUse]->playerHandHeap.begin()+whichHandUsed);
+            playerList[whoUse]->useKillNum-=1;
             isInit=true;
             repaintHands();
             disconnectHands();

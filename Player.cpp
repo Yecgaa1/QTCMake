@@ -98,9 +98,17 @@ void Player::doDrawStage(PlayerID PlayerID)//摸牌阶段
 }
 
 void Player::doPlayStage(PlayerID PlayerID) {
+
     w.askChoose(PlayerID,1,OutHand);
 }
 
 void Player::doFoldPhase(PlayerID PlayerID) {
-
+    int i=playerHandHeap.size()-bloodNow;
+    if(i<=0)
+    {
+        //不用弃牌
+        isInit = true;
+        gameInfo.nowRoundState = endOfRound;
+    }
+    w.askChoose(PlayerID,i,OutHand);
 }

@@ -27,9 +27,9 @@ void MainWindow::cardAllDown() {
 
 }
 
-void MainWindow::cardChooseAnime(bool single, QPushButton *a, ...) {
-    bool isWantTop=false;
-    if(a->geometry().y()==50)isWantTop=true;
+void MainWindow::cardChooseAnime(int i, QPushButton *a, ...) {
+    bool isWantTop = false;
+    if (a->geometry().y() == 50)isWantTop = true;
     //此时如果是50就是下方,0就是上方
     animeGroup = new QParallelAnimationGroup(this);
     if (single)cardAllDown();
@@ -56,7 +56,7 @@ void MainWindow::cardChooseAnime(bool single, QPushButton *a, ...) {
 //        });
     }
     setHandLevel();//重绘分层,模拟拿出来看的效果
-    if(isWantTop) {
+    if (isWantTop) {
         a->raise();
     }
     animeGroup->start();
@@ -86,24 +86,38 @@ void MainWindow::askChoose(PlayerID PlayerID, int num, tipsType tipsType, cardSp
 
         case giveUp:
             ui->tips->setText(str.sprintf("请弃置%d张牌", num));
+            for (int i = 0; i < playerList[PlayerID]->playerHandHeap.size(); i++) {
+                connect(HandCardGroup[i], &QPushButton::clicked, this, [=] {
+                    cardChooseAnime(false, HandCardGroup[i]);
+                });
+            }
             break;
         case OutHand:
             ui->tips->setText(str.sprintf("请出牌"));
             //timerRun(playingHandTimer);//TODO: 定时器,暂时注释
+            for (int i = 0; i < playerList[PlayerID]->playerHandHeap.size(); i++) {
+                //确定该牌是否可以使用
+                if (!playerList[PlayerID]->playerHandHeap[i].isUseInPlayingRound) {
+                    HandCardGroup[i]->setEnabled(false);
+                    continue;
+                }
+                //以下是特殊情况
+                if (playerList[PlayerID]->playerHandHeap[i].Species == kill && playerList[PlayerID]->useKillNum == 0) {
+                    HandCardGroup[i]->setEnabled(false);
+                    continue;
+                }//不能出两次杀
+                if (playerList[PlayerID]->playerHandHeap[i].Species == peach &&
+                    playerList[PlayerID]->bloodNow == playerList[PlayerID]->bloodTop) {
+                    HandCardGroup[i]->setEnabled(false);
+                    continue;
+                }//不能满血吃桃
+                //绑定槽
+                connect(HandCardGroup[i], &QPushButton::clicked, this, [=] {
+                    cardChooseAnime(true, HandCardGroup[i]);
+                });
+            }
             break;
     }
-
-    for (int i = 0; i < playerList[PlayerID]->playerHandHeap.size(); i++) {
-        //确定该牌是否可以使用
-        if (!playerList[PlayerID]->playerHandHeap[i].isUseInPlayingRound)
-            HandCardGroup[i]->setEnabled(false);
-        //绑定槽
-        connect(HandCardGroup[i], &QPushButton::clicked, this, [=] {
-            cardChooseAnime(true, HandCardGroup[i]);
-        });
-    }
-
-
 }
 
 void MainWindow::timerRun(timerType type, int sec) {

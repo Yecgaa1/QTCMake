@@ -194,7 +194,7 @@ void MainWindow::chooseFinish(vector<int> a) {
             switch (gameInfo.nowRoundState)
             {
                 case playStage:
-                    callHandFunction(OneP,upHand[0],&MainWindow::function_kill);
+                    callHandFunction(OneP,upHand[0],playerList[0]->playerHandHeap[upHand[0]].handFunction);
                     break;
                 case foldPhase:
                     break;
@@ -319,6 +319,12 @@ void MainWindow::MainStateMachine() {
                     ui->info->setText("playStage");
                     if (isInit) {
                         isInit = false;
+                        ui->jump->show();
+                        connect( ui->jump, &QPushButton::clicked, this, [=] {
+                            isInit =true;
+                            gameInfo.nowRoundState = foldPhase;
+                            ui->jump->hide();
+                        });
                         playerList[0]->playStageEvent(OneP);
                     }
                     break;

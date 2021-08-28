@@ -35,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
             ui->VS->hide();
             ui->isHeroChoose->hide();
             ui->isHeroChoose_2->hide();
+            ui->jump->hide();
             //手牌组初始化
             HandCardGroup.push_back(ui->card1);
             HandCardGroup.push_back(ui->card2);

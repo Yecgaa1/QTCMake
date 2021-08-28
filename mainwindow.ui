@@ -750,6 +750,19 @@ background-color: rgba(255, 255, 255,70);</string>
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="jump">
+    <property name="geometry">
+     <rect>
+      <x>1070</x>
+      <y>610</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>跳过回合</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

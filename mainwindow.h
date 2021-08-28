@@ -103,7 +103,7 @@ private:
     //动画
     int timeRound=0;//一个周期事件
     void cardAllDown();
-    void cardChooseAnime(bool single,QPushButton* a,...);//手牌移动动画组,不可加入多个组目前
+    void cardChooseAnime(int i,QPushButton* a,...);//手牌移动动画组,不可加入多个组目前
     void cardUpDown(bool single,QPushButton* a);
     void setHandLevel();
     void disconnectHands();
