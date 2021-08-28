@@ -117,16 +117,16 @@ private:
     void showSkill(int i,QPushButton* a);//技能显示
     void finishHeroChoose();
 
-    void callHandFunction(void (MainWindow::*handFunction)(int),int i=0);//回调牌功能
+    void callHandFunction(PlayerID PlayerID,void (MainWindow::*handFunction)());//回调牌功能
     //各手牌功能回调函数
-    void function_kill(int i=0);
+    void function_kill();
 
 //摸牌堆
 
 
 };
 
-typedef void (MainWindow::*handFunction)(int i);
+typedef void (MainWindow::*handFunction)();
 
 struct Hands
 {

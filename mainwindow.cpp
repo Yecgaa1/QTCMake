@@ -2,6 +2,7 @@
 #include <QParallelAnimationGroup>
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "Player.h"
 #include <QTimer>
 #include <iostream>
 #include <QPainter>
@@ -14,6 +15,7 @@ int nextHandHeap=0;
 info gameInfo;
 mainStateEnum mainState;
 bool isInit=true;//主状态机用
+Player* playerList[2];//玩家对象表
 
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -31,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
             ui->HeroWeight1->hide();
             ui->HeroWeight2->hide();
             ui->VS->hide();
+            ui->isHeroChoose->hide();
+            ui->isHeroChoose_2->hide();
             //手牌组初始化
             HandCardGroup.push_back(ui->card1);
             HandCardGroup.push_back(ui->card2);

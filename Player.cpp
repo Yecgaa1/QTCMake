@@ -7,7 +7,7 @@
 #include "value.h"
 using namespace std;
 
-Player* playerList[2];//玩家对象表
+
 
 extern MainWindow w;
 
@@ -29,7 +29,6 @@ Player::Player(int i,PlayerID P) {
     {
 
         case OneP:
-            headBox=ui->
             break;
         case TwoP:
             break;
@@ -53,9 +52,10 @@ void Player::getHandEvent(int num) {
     }
 }
 
-void Player::bloodChangeEvent(int num, sourceOfDamage sourceOfDamage, Player* player) {
+void Player::bloodChangeEvent(int num, sourceOfDamage sourceOfDamage,PlayerID PlayerID) {
     this->bloodNow-=num;
     this->HandTop-=num;
+    if(bloodNow>=5)
 }
 
 void Player::giveUpHand(Player player, int num, bool type) {

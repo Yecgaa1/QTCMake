@@ -55,7 +55,7 @@ void MainWindow::cardChooseAnime(bool single, QPushButton *a, ...) {
 //            }
 //        });
     }
-    setHandLevel();//重绘分层
+    setHandLevel();//重绘分层,模拟拿出来看的效果
     if(isWantTop) {
         a->raise();
     }
@@ -170,7 +170,8 @@ void MainWindow::setHandLevel() {
     for (auto &i : HandCardGroup) i->raise();
 }
 
-void MainWindow::askChooseAnime(PlayerID PlayerID,void (MainWindow::*Function)(int),bool isDistanceCheck=false) {
+/*
+void MainWindow::askChooseAnime(PlayerID PlayerID,void (MainWindow::*Function)(),bool isDistanceCheck=false) {
 
     if(isDistanceCheck);
     for(int i=0;i<PLAYERNUM;i++)
@@ -180,3 +181,4 @@ void MainWindow::askChooseAnime(PlayerID PlayerID,void (MainWindow::*Function)(i
 
     }
 }
+*/

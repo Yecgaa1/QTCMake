@@ -9,6 +9,7 @@ using namespace std;
 
 enum PlayerID//玩家状态机用
 {
+    NoOne=-1,
     OneP=0,
     TwoP=1,
     //ThreeP,

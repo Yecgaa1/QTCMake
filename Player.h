@@ -20,7 +20,7 @@ public:
 
 
     // 回合事件
-    Player(int i, PlayerID P);//主构造函数
+    Player(int i, PlayerID P,);//主构造函数
 
     void startOfRoundEvent(PlayerID PlayerID) {
         gameInfo.nowRoundState = judgmentStage;
@@ -56,9 +56,9 @@ public:
     //回合中事件
     void getHandEvent(int num);
 
-    void bloodChangeEvent(int num, sourceOfDamage sourceOfDamage = None, Player *player = nullptr);
+    void bloodChangeEvent(int num, sourceOfDamage sourceOfDamage = None, PlayerID PlayerID=NoOne);
 
-    void getPlayerHandEvent(Player *player, int num, bool type = false);
+    void getPlayerHandEvent(PlayerID PlayerID, int num, bool type = false);
 
     void giveUpHand(Player player, int num, bool type = false);
 

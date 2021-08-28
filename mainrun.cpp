@@ -194,7 +194,7 @@ void MainWindow::chooseFinish(vector<int> a) {
             switch (gameInfo.nowRoundState)
             {
                 case playStage:
-                    callHandFunction(&MainWindow::function_kill);
+                    callHandFunction(OneP,&MainWindow::function_kill);
                     break;
                 case foldPhase:
                     break;

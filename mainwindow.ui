@@ -465,6 +465,23 @@ background-color: rgba(255, 255, 255,70);</string>
       <string/>
      </property>
     </widget>
+    <widget class="QLabel" name="isHeroChoose">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>211</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-width: 5px;border-style: solid;border-color:red
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>HeroHead</zorder>
     <zorder>HeroBox</zorder>
     <zorder>weapons</zorder>
@@ -473,6 +490,7 @@ background-color: rgba(255, 255, 255,70);</string>
     <zorder>four</zorder>
     <zorder>five</zorder>
     <zorder>two</zorder>
+    <zorder>isHeroChoose</zorder>
    </widget>
    <widget class="QWidget" name="HeroWeight2" native="true">
     <property name="geometry">
@@ -611,6 +629,23 @@ background-color: rgba(255, 255, 255,70);</string>
       <string/>
      </property>
     </widget>
+    <widget class="QLabel" name="isHeroChoose_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>211</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-width: 5px;border-style: solid;border-color:red
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>HeroHead_2</zorder>
     <zorder>HeroBox_2</zorder>
     <zorder>weapons_2</zorder>
@@ -619,6 +654,7 @@ background-color: rgba(255, 255, 255,70);</string>
     <zorder>five_2</zorder>
     <zorder>four_2</zorder>
     <zorder>two_2</zorder>
+    <zorder>isHeroChoose_2</zorder>
    </widget>
    <widget class="QGroupBox" name="TestBox">
     <property name="geometry">
@@ -721,7 +757,7 @@ background-color: rgba(255, 255, 255,70);</string>
      <x>0</x>
      <y>0</y>
      <width>1440</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>

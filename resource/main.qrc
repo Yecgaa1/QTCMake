@@ -9,7 +9,6 @@
         <file>other/4.png</file>
         <file>other/5.png</file>
         <file>other/card-container.png</file>
-        <file>other/dashboard-avatar.png</file>
         <file>other/dashboard-equip.png</file>
         <file>hero/47.png</file>
         <file>other/vs.png</file>
@@ -20,5 +19,6 @@
         <file>hands/203.png</file>
         <file>hands/204.png</file>
         <file>other/next.png</file>
+        <file>other/dashboard-avatar.png</file>
     </qresource>
 </RCC>
