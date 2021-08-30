@@ -239,4 +239,13 @@ void MainWindow::disconnectHands() {
 //
 //    }
 //}
+///游戏结束
+void MainWindow::exitGame() {
+    ui->tips->setText("游戏结束,按确定结束游戏");
+    ui->YesOrNo->show();
+    ui->Yes->disconnect();
+    connect(ui->Yes, &QPushButton::clicked, this, [=] {
+        exit(0);
+    });
 
+}

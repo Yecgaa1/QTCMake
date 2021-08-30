@@ -9,6 +9,7 @@
 
 
 bool changeStyle = true;
+bool GameOver=false;
 int FirstSetUp=1;
 Hands HandHeap[108];
 int nextHandHeap=0;
@@ -38,6 +39,9 @@ MainWindow::MainWindow(QWidget *parent)
             ui->isHeroChoose->hide();
             ui->isHeroChoose_2->hide();
             ui->jump->hide();
+            ui->isDead->hide();
+            ui->isDead_2->hide();
+
             //手牌组初始化
             HandCardGroup.push_back(ui->card1);
             HandCardGroup.push_back(ui->card2);

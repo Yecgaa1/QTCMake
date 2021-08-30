@@ -401,22 +401,6 @@ background-color: rgba(255, 255, 255,70);</string>
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="HeroHead">
-     <property name="geometry">
-      <rect>
-       <x>7</x>
-       <y>15</y>
-       <width>211</width>
-       <height>261</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/hero/47.png);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QLabel" name="three">
      <property name="geometry">
       <rect>
@@ -482,6 +466,38 @@ background-color: rgba(255, 255, 255,70);</string>
       <string/>
      </property>
     </widget>
+    <widget class="QPushButton" name="HeroHead">
+     <property name="geometry">
+      <rect>
+       <x>15</x>
+       <y>7</y>
+       <width>211</width>
+       <height>261</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/hero/47.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="isDead">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>201</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/isDead.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>HeroHead</zorder>
     <zorder>HeroBox</zorder>
     <zorder>weapons</zorder>
@@ -491,6 +507,7 @@ background-color: rgba(255, 255, 255,70);</string>
     <zorder>five</zorder>
     <zorder>two</zorder>
     <zorder>isHeroChoose</zorder>
+    <zorder>isDead</zorder>
    </widget>
    <widget class="QWidget" name="HeroWeight2" native="true">
     <property name="geometry">
@@ -565,22 +582,6 @@ background-color: rgba(255, 255, 255,70);</string>
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="HeroHead_2">
-     <property name="geometry">
-      <rect>
-       <x>7</x>
-       <y>15</y>
-       <width>211</width>
-       <height>261</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image: url(:/hero/47.png);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QLabel" name="three_2">
      <property name="geometry">
       <rect>
@@ -646,6 +647,38 @@ background-color: rgba(255, 255, 255,70);</string>
       <string/>
      </property>
     </widget>
+    <widget class="QPushButton" name="HeroHead_2">
+     <property name="geometry">
+      <rect>
+       <x>7</x>
+       <y>15</y>
+       <width>211</width>
+       <height>261</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/hero/47.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="isDead_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>201</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/other/isDead.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>HeroHead_2</zorder>
     <zorder>HeroBox_2</zorder>
     <zorder>weapons_2</zorder>
@@ -655,6 +688,7 @@ background-color: rgba(255, 255, 255,70);</string>
     <zorder>four_2</zorder>
     <zorder>two_2</zorder>
     <zorder>isHeroChoose_2</zorder>
+    <zorder>isDead_2</zorder>
    </widget>
    <widget class="QGroupBox" name="TestBox">
     <property name="geometry">

@@ -162,8 +162,9 @@ void MainWindow::chooseHero()//武将选择
         ui->card3->setEnabled(true);
     }, Qt::UniqueConnection);
     mainState = choosingHero;
-    connect(ui->Yes, SIGNAL(clicked()), this, SLOT(chooseFinish()), Qt::UniqueConnection);
+    connect(ui->Yes, &QPushButton::clicked, this, [=] {w.chooseFinish();});
     timerRun(choosingHeroTimer);
+
 
 }
 /// 牌选择结束处理函数
@@ -277,7 +278,13 @@ void MainWindow::finishHeroChoose() {
 void MainWindow::PrepareRoundOfGame() {
     disconnect(animeGroup);
     ui->TestBox->show();
-    connect(ui->testButton1, &QPushButton::clicked, this, [=] { playerList[0]->bloodChangeEvent(1); });
+
+    ui->testButton1->setText("尝试对自己造成伤害,技能验证");
+    ui->testButton1->setToolTip("尝试对自己造成伤害,技能验证");
+    connect(ui->testButton1, &QPushButton::clicked, this, [=] {
+        disconnectHands();
+        playerList[0]->bloodChangeEvent(1); });
+
     playerList[0]->getHandEvent(4);
     playerList[1]->getHandEvent(4);
 
@@ -359,7 +366,63 @@ void MainWindow::MainStateMachine() {
             break;
         }
         case TwoP: {
-
+            switch (gameInfo.nowRoundState)
+            {
+            case startOfRound:
+                if (isInit) {
+                    isInit = false;
+                    ui->info->setText("startOfRound");
+                    playerList[1]->startOfRoundEvent(OneP);
+                }
+            break;
+            case judgmentStage:
+                ui->info->setText("judgmentStage");
+            if (isInit) {
+                isInit = false;
+                playerList[1]->judgmentStageEvent(OneP);
+            }
+            break;
+            case drawStage:
+                ui->info->setText("drawStage");
+            if (isInit) {
+//                isInit = false;
+//                playerList[1]->drawStageEvent(OneP);
+                gameInfo.nowRoundState=playStage;
+            }
+            break;
+            case playStage:
+                ui->info->setText("playStage");
+            if (isInit) {
+//                isInit = false;
+//                ui->YesOrNo->show();
+//                ui->jump->show();
+//                connect( ui->jump, &QPushButton::clicked, this, [=] {
+//                    isInit =true;
+//                    disconnectHands();
+//                    gameInfo.nowRoundState = foldPhase;
+//                    ui->YesOrNo->hide();
+//                    ui->jump->hide();
+//                });
+//                playerList[1]->playStageEvent(OneP);
+                gameInfo.nowRoundState=foldPhase;
+            }
+            break;
+            case foldPhase:
+                ui->info->setText("foldPhase");
+            if (isInit) {
+                gameInfo.nowRoundState=endOfRound;
+//                isInit = false;
+//                playerList[1]->foldPhaseEvent(OneP);
+            }
+            break;
+            case endOfRound:
+                ui->info->setText("endOfRound");
+            if (isInit) {
+                isInit = false;
+                playerList[1]->endOfRoundEvent(OneP);
+            }
+            break;
+        }
             break;
         }
     }

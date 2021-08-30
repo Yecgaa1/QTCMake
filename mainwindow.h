@@ -24,6 +24,8 @@ class MainWindow : public QMainWindow
 
 
 
+
+
 //void changeOpacity();等待重写为模板函数
 
 public:
@@ -35,7 +37,8 @@ public:
     void chooseHero();
     void repaintHands();//手牌重绘,仅可用于对手牌而不是武将牌
     void askChoose(PlayerID PlayerID,int num,tipsType tipsType,cardSpecies cardSpecies=allKind);
-
+    void chooseFinish(vector<int> a={});
+    void exitGame();
 
 
 
@@ -46,7 +49,7 @@ private slots:
     void timerWork();
 
     void timeout();
-    void chooseFinish(vector<int> a={});
+
     void PrepareRoundOfGame();
     void MainStateMachine();//主状态机
 

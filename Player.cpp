@@ -10,6 +10,7 @@ using namespace std;
 
 
 extern MainWindow w;
+extern bool GameOver;
 /// player构造函数
 /// \param i 英雄id
 /// \param P 玩家id
@@ -72,6 +73,14 @@ void Player::bloodChangeEvent(int num, sourceOfDamage sourceOfDamage,PlayerID Pl
     else blood[1]->hide();
     if(bloodNow>=1)blood[0]->show();
     else blood[0]->hide();
+    if(bloodNow<=0)
+    {
+        //应该还有个濒死处置
+        w.ui->HeroHead->setEnabled(false);
+        w.ui->isDead->show();
+        GameOver=true;
+        w.exitGame();
+    }
 }
 /// 要求弃牌事件
 /// \param player 弃牌事件来源

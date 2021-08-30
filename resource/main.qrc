@@ -20,5 +20,6 @@
         <file>hands/204.png</file>
         <file>other/next.png</file>
         <file>other/dashboard-avatar.png</file>
+        <file>other/isDead.png</file>
     </qresource>
 </RCC>
