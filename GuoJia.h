@@ -8,8 +8,9 @@
 
 #include "Player.h"
 
-class GuoJia: Player{
+class GuoJia: Player, public QMainWindow {
     void bloodChangeEvent(int num, sourceOfDamage sourceOfDamage, PlayerID PlayerID) override;
+
 };
 
 

@@ -7,6 +7,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "Player.h"
+#include "GuoJia.h"
 
 using namespace std;
 
@@ -219,7 +220,7 @@ void MainWindow::finishHeroChoose() {
     QLabel* blood1[5]={ui->one,ui->two,ui->three,ui->four,ui->five};
     QLabel* blood2[5]={ui->one_2,ui->two_2,ui->three_2,ui->four_2,ui->five_2};
 
-    playerList[0] = new Player(47, OneP,blood1);//-1因为hero组只有从第二个按钮开始的三个
+    playerList[0] = new GuoJia(47, OneP,blood1);//-1因为hero组只有从第二个按钮开始的三个
     playerList[1] = new Player(193, TwoP,blood2);
 
     //原本应该再写一个函数来处理初始化的血量问题的,这里就算了
@@ -276,7 +277,7 @@ void MainWindow::finishHeroChoose() {
 void MainWindow::PrepareRoundOfGame() {
     disconnect(animeGroup);
     ui->TestBox->show();
-    connect(ui->testButton1, &QPushButton::clicked, this, [=] { playerList[1]->bloodChangeEvent(1); });
+    connect(ui->testButton1, &QPushButton::clicked, this, [=] { playerList[0]->bloodChangeEvent(1); });
     playerList[0]->getHandEvent(4);
     playerList[1]->getHandEvent(4);
 
