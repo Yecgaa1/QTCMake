@@ -17,6 +17,7 @@ char *argv[]={};
 QApplication a(argc, argv);
 MainWindow w;
 
+///主启动程序
 int main(int argc, char *argv[])
 {
 

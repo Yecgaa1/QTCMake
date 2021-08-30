@@ -1,4 +1,4 @@
-//
+// player主函数
 // Created by xtx on 2021/8/17.
 //
 
@@ -10,7 +10,10 @@ using namespace std;
 
 
 extern MainWindow w;
-
+/// player构造函数
+/// \param i 英雄id
+/// \param P 玩家id
+/// \param blood 前端对应的玩家血量的血量条的控件指针(测试)
 Player::Player(int i,PlayerID P,QLabel* blood[5]) {
     //由于确认是两人游戏了
     //就不写2P以上的背景渲染了
@@ -34,7 +37,8 @@ Player::Player(int i,PlayerID P,QLabel* blood[5]) {
             break;
     }
 }
-
+/// 获得牌
+/// \param num 数量
 void Player::getHandEvent(int num) {
     for(int i=0;i<num;i++)
     {
@@ -51,7 +55,10 @@ void Player::getHandEvent(int num) {
         w.repaintHands();
     }
 }
-
+/// 血量改变函数
+/// \param num 数量(默认为减)
+/// \param sourceOfDamage 伤害来源(默认为无)
+/// \param PlayerID 如果来源于玩家,来源玩家(默认为无)
 void Player::bloodChangeEvent(int num, sourceOfDamage sourceOfDamage,PlayerID PlayerID) {
     this->bloodNow-=num;
     this->HandTop-=num;
@@ -66,23 +73,16 @@ void Player::bloodChangeEvent(int num, sourceOfDamage sourceOfDamage,PlayerID Pl
     if(bloodNow>=1)blood[0]->show();
     else blood[0]->hide();
 }
-
-void Player::giveUpHand(Player player, int num, bool type) {
+/// 要求弃牌事件
+/// \param player 弃牌事件来源
+/// \param num 数量
+/// \param cardSpecies 手牌类型
+void Player::giveUpHand(Player player, int num, cardSpecies type) {
 
 }
+/// 判定阶段默认操作
+/// \param PlayerID 玩家ID
 
-
-
-//void Player::bloodSetAnime(Player player,PlayerID P) {
-//    switch (P) {
-//        case OneP:
-//
-//            break;
-//        case TwoP:
-//            break;
-//
-//    }
-//}
 void Player::doJudgmentStage(PlayerID PlayerID)//判定阶段
 {
     for(int i=0;i<judgmentHand.size();i++)
@@ -91,17 +91,20 @@ void Player::doJudgmentStage(PlayerID PlayerID)//判定阶段
     }
     judgmentHand.clear();
 }
-
+/// 摸牌阶段默认操作
+/// \param PlayerID 玩家ID
 void Player::doDrawStage(PlayerID PlayerID)//摸牌阶段
 {
     getHandEvent(2);
 }
-
+/// 出牌阶段默认操作
+/// \param PlayerID 玩家ID
 void Player::doPlayStage(PlayerID PlayerID) {
 
     w.askChoose(PlayerID,1,OutHand);
 }
-
+/// 弃牌阶段默认操作
+/// \param PlayerID 玩家ID
 void Player::doFoldPhase(PlayerID PlayerID) {
     int i=playerHandHeap.size()-bloodNow;
     if(i<=0)

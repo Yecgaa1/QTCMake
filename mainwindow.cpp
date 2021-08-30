@@ -17,10 +17,12 @@ mainStateEnum mainState;
 bool isInit=true;//主状态机用
 Player* playerList[2];//玩家对象表
 
+/// 构造函数,ui构造与初始化
+/// \param parent
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
         ui->setupUi(this);
-        this->setWindowTitle("Hello");
+        this->setWindowTitle("三国杀 ver 0.0.1alpha(请勿用于生产环境())");
         cout << "Hello?";
         if (changeStyle) {
             ui->timeBar->hide();
@@ -65,22 +67,13 @@ MainWindow::MainWindow(QWidget *parent)
         //connect(ui->testButton, SIGNAL(clicked()), this, SLOT(start()));
         //connect(qtimer, SIGNAL(timeout()), this, SLOT(timeout()));}
     }
-
+/// 析构函数
 MainWindow::~MainWindow() {
     delete ui;
 }
-
+/// 背景重绘函数paintEvent重写
 void MainWindow::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     painter.drawPixmap(this->rect(),QPixmap("resource/wallpaper/background.png"));
 }
-
-
-//void MainWindow::paintEvent(QPaintEvent *)
-//{
-//    QStyleOption option;
-//    option.init(this);
-//    QPainter painter(this);
-//    style()->drawPrimitive(QStyle::PE_Widget, &option, &painter, this);
-//}

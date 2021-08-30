@@ -1,4 +1,4 @@
-//
+// 手牌功能函数
 // Created by xtx on 2021/8/26.
 //
 
@@ -11,13 +11,16 @@ using namespace std;
 extern Player* playerList[2];//玩家对象表
 int whichHandUsed;
 PlayerID whoUse;//会被每次牌的使用而即时改变的变量
-
+/// 手牌功能回调触发函数
+/// \param PlayerID 使用手牌的玩家
+/// \param HandsID 使用手牌在手牌堆的序号
+/// \param handFunction 回调函数
 void MainWindow::callHandFunction(PlayerID PlayerID,int HandsID,void (MainWindow::*handFunction)()) {
     whoUse=PlayerID;
     whichHandUsed=HandsID;
     (this->*handFunction)();
 }
-
+///杀的回调函数
 void MainWindow::function_kill() {
     //原来应该有个选择的函数askChooseAnime,但是函数指针调用问题就弃了,git有记录
     ui->YesOrNo->hide();

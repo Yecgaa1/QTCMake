@@ -15,6 +15,7 @@ int heroNum[3] = {};
 
 extern Player *playerList[2];//玩家对象表
 
+///洗牌函数(该函数本来应该包含对场上牌进行判断然后排除性洗牌)
 void MainWindow::washCard() {
     int id = 0;
     //构建排序用链表
@@ -115,6 +116,7 @@ void MainWindow::washCard() {
     }
 }
 
+///武将选择函数(最早一批代码,存在一些臃肿问题)
 void MainWindow::chooseHero()//武将选择
 {
     ui->card4->hide();
@@ -163,7 +165,8 @@ void MainWindow::chooseHero()//武将选择
     timerRun(choosingHeroTimer);
 
 }
-
+/// 牌选择结束处理函数
+/// \param a 强制选择的目标的传入,用于给TimeOut调用,默认为空
 void MainWindow::chooseFinish(vector<int> a) {
     //遍历得到那张牌被举起
     ui->timeBar->hide();
@@ -205,9 +208,14 @@ void MainWindow::chooseFinish(vector<int> a) {
     }
 }
 
+///英雄选择完成的初始化函数
 void MainWindow::finishHeroChoose() {
     int rivalID = 193;
     QString str;
+
+    ui->YesOrNo->hide();
+    ui->tips->setText("");
+
     QLabel* blood1[5]={ui->one,ui->two,ui->three,ui->four,ui->five};
     QLabel* blood2[5]={ui->one_2,ui->two_2,ui->three_2,ui->four_2,ui->five_2};
 
@@ -264,7 +272,7 @@ void MainWindow::finishHeroChoose() {
     connect(animeGroup, SIGNAL(finished()), this, SLOT(PrepareRoundOfGame()), Qt::UniqueConnection);
     return;
 }
-
+/// 开始正式对局的vs的显示和主状态机的启动
 void MainWindow::PrepareRoundOfGame() {
     disconnect(animeGroup);
     ui->TestBox->show();
@@ -283,7 +291,7 @@ void MainWindow::PrepareRoundOfGame() {
     //isInit=false;//暂停状态机
     connect(MainStateTimer, SIGNAL(timeout()), this, SLOT(MainStateMachine()), Qt::UniqueConnection);
 }
-
+///主状态机函数,计时器不断触发该函数,根据阶段执行相应命令
 void MainWindow::MainStateMachine() {
     //灵感:写ACFly写多了
     //注意:阻塞性代码不可写在这里
@@ -319,10 +327,13 @@ void MainWindow::MainStateMachine() {
                     ui->info->setText("playStage");
                     if (isInit) {
                         isInit = false;
+                        ui->YesOrNo->show();
                         ui->jump->show();
                         connect( ui->jump, &QPushButton::clicked, this, [=] {
                             isInit =true;
+                            disconnectHands();
                             gameInfo.nowRoundState = foldPhase;
+                            ui->YesOrNo->hide();
                             ui->jump->hide();
                         });
                         playerList[0]->playStageEvent(OneP);

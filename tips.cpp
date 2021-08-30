@@ -7,12 +7,14 @@
 #include "./ui_mainwindow.h"
 
 using namespace std;
-
+///tips栏清空函数
 void MainWindow::clear()
 {
-
+    ui->tips->setText("");
 }
-
+/// 展示英雄技能函数
+/// \param i
+/// \param a
 void MainWindow::showSkill(int i,QPushButton* a) {
     if(a->geometry().y()==50) {    //未来可以改用文本库的形式
         if (i == 47)

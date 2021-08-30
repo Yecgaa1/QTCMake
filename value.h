@@ -7,7 +7,8 @@
 
 using namespace std;
 
-enum PlayerID//玩家状态机用
+///玩家ID
+enum PlayerID
 {
     NoOne=-1,
     OneP=0,
@@ -15,17 +16,19 @@ enum PlayerID//玩家状态机用
     //ThreeP,
 };
 
-
+///提示类型
 enum tipsType
 {
     giveUp,
     OutHand
 };
+///倒计时类型
 enum timerType
 {
     playingHandTimer,
     choosingHeroTimer,
 };
+///手牌类型
 enum cardSpecies
 {
     allKind=0,
@@ -62,7 +65,8 @@ enum cardSpecies
     addAHorse=602,//加一马
 
 };
-enum roundState//回合状态机用
+///回合状态机类型
+enum roundState
 {
     startOfRound=1,//回合开始阶段
     judgmentStage=2,//判定阶段
@@ -71,7 +75,7 @@ enum roundState//回合状态机用
     foldPhase=5,//弃牌阶段
     endOfRound=6,//回合结束阶段
 };
-
+///伤害来源类型
 enum sourceOfDamage
 {
     player,
@@ -79,17 +83,16 @@ enum sourceOfDamage
     None,
 };
 
-struct info //游戏中状态机用
+///游戏中信息
+struct info
 {
     int playerNum=2;
     PlayerID nowPlayerID;
     roundState nowRoundState;
 };
 
-
-
-
-enum mainStateEnum//外部主状态标志
+///外部主状态标志类型
+enum mainStateEnum
 {
     choosingHero,
     playing,

@@ -22,16 +22,18 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+
+
 //void changeOpacity();等待重写为模板函数
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    Ui::MainWindow *ui;
 
     int HeroId=0;//用户最终选定的英雄
     void chooseHero();
-    void repaintHands(bool isSetLocated=true);//手牌重绘,仅可用于对手牌而不是武将牌
+    void repaintHands();//手牌重绘,仅可用于对手牌而不是武将牌
     void askChoose(PlayerID PlayerID,int num,tipsType tipsType,cardSpecies cardSpecies=allKind);
 
 
@@ -42,6 +44,7 @@ private slots:
 
     //计时器槽
     void timerWork();
+
     void timeout();
     void chooseFinish(vector<int> a={});
     void PrepareRoundOfGame();
@@ -52,7 +55,6 @@ private slots:
 
 
 private:
-    Ui::MainWindow *ui;
     QParallelAnimationGroup *animeGroup;
     QTimer *qtimer=new QTimer();
     int timerTemp=100;//计时器用,代表进度百分比
@@ -108,7 +110,7 @@ private:
     void setHandLevel();
     void disconnectHands();
     void askChooseAnime(PlayerID PlayerID,void (MainWindow::*Function)(int i),bool isDistanceCheck=false);
-
+    void handsToCenter();
 
     void timerRun(timerType type,int sec=10);//不得大于20s
 
@@ -123,7 +125,7 @@ private:
     //各手牌功能回调函数
     void function_kill();
 
-//摸牌堆
+    void getDistance(PlayerID PlayerFrom,PlayerID PlayerTo);
 
 
 };
